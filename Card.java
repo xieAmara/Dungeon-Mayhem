@@ -17,6 +17,10 @@ public abstract class Card {
     public Card(int hp){
         this.hp = hp; 
     }
+
+    public Card(int specialCount, int attackCount, int defenseCount, int drawCountm, int healCount, int hp){
+        
+    }
     
 
 
