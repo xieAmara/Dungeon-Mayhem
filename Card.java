@@ -9,12 +9,17 @@ public abstract class Card {
     private int specialCount; 
     private int attackCount; 
     private int defenseCount; 
+    private int drawCount; 
+    private int healCount; 
+
     
     //==================================CONSTRUCTOR=======================================//
     public Card(int hp){
         this.hp = hp; 
     }
     
+
+
 
     //==================================PRIVATE METHOD====================================//
 
