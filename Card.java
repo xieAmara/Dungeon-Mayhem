@@ -4,7 +4,7 @@ public abstract class Card {
     public static final int WIZARD = 2; 
     public static final int PALADIN = 3;
 
-    private int hp; 
+    private int hp;     
     private int shield; 
     private int specialCount; 
     private int attackCount; 
