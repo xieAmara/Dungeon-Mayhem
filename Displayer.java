@@ -21,19 +21,28 @@ public class Displayer {
         System.out.println("=======================================");
     }
 
-    public void ShowCard(Card card){
+    public void ShowCard(Card card, int cardPos){
         String attack = "attack : "+Integer.toString(card.GetAttackCount());
         String defense = "defense : "+Integer.toString(card.GetDefenseCount());
         String special = "special : "+Integer.toString(card.GetSpecialCount());
         String heal = "heal : "+Integer.toString(card.GetHealCount());
+        String cardInfo = CardType(card) +" "+ Integer.toString(cardPos);
         System.out.println("------------------------------");
-        System.out.printf("|%-28s|\n", CardType(card));
+        System.out.printf("|%-28s|\n", cardInfo);
         System.out.printf("|%28s|\n",attack);
         System.out.printf("|%28s|\n",defense);
         System.out.printf("|%28s|\n",special);
         System.out.printf("|%28s|\n",heal);
         System.out.println("------------------------------");
 
+    }
+
+    public void ShowCardHand(Card[] cards){
+        for(int i = 0; i < cards.length; i++){
+            if(cards[i] != null){
+                ShowCard(cards[i], i+1);
+            }
+        }
     }
 
     public void DisplayDeckChoice(int player){
@@ -66,7 +75,24 @@ public class Displayer {
         System.out.println("-----------------------------------------");
     }
 
-    public void ShowShield(){
-
+    public void ShowShield(int shield){
+        System.out.println("=============== SHEILD ===============");
+        if(shield==0){
+            System.out.println("You have no shields at the moment");
+        }
+        else{
+            for(int i=0; i<shield; i++){
+                System.out.print("----");
+            }
+            System.out.println("-");
+            for(int i=0; i<shield; i++){
+                System.out.print("| S ");
+            }
+            System.out.println("|");
+            for(int i=0; i<shield; i++){
+                System.out.print("----");
+            }
+            System.out.println("-");
+        }
     }
 }

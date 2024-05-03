@@ -38,12 +38,22 @@ public class DungeonMayhemMain {
             deckTrack[deckChoice - 1] = true; 
         }
         while(!dm.HasGameWinner()){
-            displayer.ShowHP(7);
+            displayer.ShowHP(dm.GetCurrPlayer().GetPlayerHp());
+            displayer.ShowShield(dm.GetCurrPlayer().GetPlayerShield());
             for(int i=0; i<5; i++){
-                displayer.ShowCard(dm.Draw());
+                dm.Draw();
             }
-            break;
+            displayer.ShowCardHand(dm.GetCurrPlayer().GetcurrPlayingCards());
+            System.out.print("Choose a card to play action: ");
+            int cardOpt = input.nextInt();
+            System.out.print("Choose a player to play action:  ");
+            int playerOpt = input.nextInt();
 
+            dm.Play(dm.GetCurrPlayer().GetcurrPlayingCards()[cardOpt-1], dm.GetAllPlayer()[playerOpt-1]);
+            // displayer.ShowHP(dm.GetAllPlayer()[playerOpt-1].GetPlayerHp());
+            // displayer.ShowShield(dm.GetCurrPlayer().GetPlayerShield());
+            // displayer.ShowHP(dm.GetCurrPlayer().GetPlayerHp());
+            break;
         }
     }
 

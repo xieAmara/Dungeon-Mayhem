@@ -1,12 +1,14 @@
 public class Player {
     private int playerHp; 
     private int playerType; 
-    private Card[] currPlayerCards;
+    private Card[] currPlayingCards;
+    private int playerShield;
     //==================================CONSTRUCTOR=======================================//
     public Player(int playerType){
         playerHp = 10; 
+        playerShield = 0; 
         this.playerType = playerType;
-        this.currPlayerCards = new Card[7];
+        this.currPlayingCards = new Card[7];
     }
 
     //==================================PRIVATE METHOD====================================//
@@ -18,9 +20,26 @@ public class Player {
     public int GetPlayerHp(){
         return this.playerHp;
     }
+
+    public int GetPlayerShield(){
+        return this.playerShield;
+    }
+
+    public void SetPlayerShield(int shield){
+        this.playerShield = shield;
+    }
+
+    public void SetPlayerHp(int hp){
+        this.playerHp = hp;
+    }
     
-    public void ReduceHp(int hp){
-        playerHp -= hp;
+
+    public Card[] GetcurrPlayingCards(){
+        return this.currPlayingCards;
+    }
+
+    public void SetCurrPlayingCard(int pos, Card card){
+        currPlayingCards[pos] = card; 
     }
 
     public void CreateDeck(int heroType, Card[][] deck){

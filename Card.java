@@ -4,7 +4,6 @@ public abstract class Card {
     public static final int WIZARD = 2; 
     public static final int PALADIN = 3;
    
-    private int shield; 
     private int specialCount; 
     private int attackCount; 
     private int defenseCount; 
@@ -20,8 +19,7 @@ public abstract class Card {
         this.specialCount = specialCount; 
         this.attackCount = attackCount; 
         this.defenseCount = defenseCount; 
-        this.healCount = healCount; 
-        this.shield = 0; 
+        this.healCount = healCount;  
     }
 
     //==================================PRIVATE METHOD====================================//
@@ -30,45 +28,42 @@ public abstract class Card {
 
     //==================================PUBLIC METHOD=====================================//
     public int GetAttackCount(){
-        return attackCount;
+        return this.attackCount;
     }
 
     public int GetSpecialCount(){
-        return specialCount;
+        return this.specialCount;
     }
     public int GetDefenseCount(){
-        return defenseCount;
+        return this.defenseCount;
     }
     public int GetHealCount(){
-        return healCount;
+        return this.healCount;
     }
 
-    public int GetShield(){
-        return 0; 
-    }
-
-    public void SetShield(int shield){
-        this.shield = shield; 
-    }
-
-    public void Attack(int attack, int hp){
-        hp -= attack; 
-    }
-
-    public void DefenseSheild(int attack, int hp){
-        if(shield>0){
-            shield -= attack; 
-            if(shield<0){
-                shield+= attack; 
-                attack -= shield; 
-                shield = 0;
-                hp -= attack;  
-            }
+    public void Attack(int attack, Player p){
+        int shield = p.GetPlayerShield();
+        if(shield>attack){
+            p.SetPlayerShield(shield-attack);
+        }
+        else if(shield<=attack){
+            p.SetPlayerShield(0);
+            attack -= shield;
+            p.SetPlayerHp(p.GetPlayerHp()-attack);
         }
     }
 
-    public void Heal(int heal, int hp){
-        hp += heal;
+    public void Defense(int shieldCount, Player p){
+        p.SetPlayerShield(shieldCount); 
+    }
+
+
+
+    public void Heal(int heal, Player p){
+        p.SetPlayerHp(p.GetPlayerHp()+heal);
+        if(p.GetPlayerHp()>10){
+            p.SetPlayerHp(10);
+        }
     }
 
     public abstract void MightyPower(int hp);

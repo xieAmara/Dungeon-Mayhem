@@ -5,7 +5,7 @@ public class DungeonMayhem{
     private Player[] allPlayers;
     private int numPlayer;
     private int remainPlayers;   
-    
+    private int cardCount; // make sure later
 
     //==================================CONSTRUCTOR=======================================//
     public DungeonMayhem(int numPlayer){
@@ -13,6 +13,7 @@ public class DungeonMayhem{
         this.allPlayers = new Player[numPlayer];
         this.allDeck = new Card[4][20];   
         this.remainPlayers = numPlayer; 
+        this.cardCount = 0; 
     }
 
     //==================================PRIVATE METHOD====================================//
@@ -72,6 +73,8 @@ public class DungeonMayhem{
         int cardPos = (int)(Math.random()*allDeck[currType].length);
 
         Card card = allDeck[currType][cardPos];
+        currPlayer.GetcurrPlayingCards()[cardCount] = card; 
+        cardCount++;
 
         Card[] temp = new Card[allDeck[currType].length - 1];
         int count = 0; 
@@ -83,6 +86,12 @@ public class DungeonMayhem{
         }
         
         return card; 
+    }
+
+    public void Play(Card card, Player p){
+        card.Attack(card.GetAttackCount(), p);
+        card.Heal(card.GetHealCount(),currPlayer);
+        card.Defense(card.GetDefenseCount(), currPlayer);
     }
 
     public boolean HasHpGone(){
