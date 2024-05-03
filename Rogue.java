@@ -1,9 +1,10 @@
 public class Rogue extends Card {
 
-
-    //==================================CONSTRUCTOR=======================================//
-
     public Rogue(int hp){
         super(hp);
+    }
+
+    public void MightyPower(int hp){
+        
     }
 }

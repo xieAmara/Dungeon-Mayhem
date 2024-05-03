@@ -18,16 +18,50 @@ public abstract class Card {
         this.hp = hp; 
     }
 
-    public Card(int specialCount, int attackCount, int defenseCount, int drawCountm, int healCount, int hp){
-        
+    public Card(int specialCount, int attackCount, int defenseCount, int drawCount, int healCount, int hp){
+        this.specialCount = specialCount; 
+        this.attackCount = attackCount; 
+        this.defenseCount = defenseCount; 
+        this.drawCount = drawCount; 
+        this.healCount = healCount; 
+        this.hp = hp; 
+        this.shield = 0; 
     }
-    
-
-
 
     //==================================PRIVATE METHOD====================================//
 
 
 
     //==================================PUBLIC METHOD=====================================//
+    public int GetHP(){
+        return 0; 
+    }
+
+    public void SetHp(int hp){
+        this.hp = hp; 
+    }
+
+    public int GetShield(){
+        return 0; 
+    }
+
+    public void SetShield(int shield){
+        this.shield = shield; 
+    }
+
+    public void Attack(int attack){
+        this.hp -= attack; 
+    }
+
+    public void Defense(){
+        
+    }
+
+    public void Heal(int hp){
+        this.hp += hp;
+    }
+
+    public abstract void MightyPower(int hp);
+     
+
 }
