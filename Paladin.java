@@ -1,8 +1,11 @@
 public class Paladin extends Card{
-    public Paladin(int hp){
-        super(hp);
+    public Paladin(){
     }
 
+    public Paladin(int specialCount, int attackCount, int defenseCount, int healCount){
+        super( specialCount,  attackCount,  defenseCount,  healCount);
+    }
+    
     public void MightyPower(int hp){
         
     }

@@ -3,8 +3,7 @@ public abstract class Card {
     public static final int BARBARIAN = 1; 
     public static final int WIZARD = 2; 
     public static final int PALADIN = 3;
-
-    private int hp;     
+   
     private int shield; 
     private int specialCount; 
     private int attackCount; 
@@ -14,17 +13,14 @@ public abstract class Card {
 
     
     //==================================CONSTRUCTOR=======================================//
-    public Card(int hp){
-        this.hp = hp; 
+    public Card(){
     }
 
-    public Card(int specialCount, int attackCount, int defenseCount, int drawCount, int healCount, int hp){
+    public Card(int specialCount, int attackCount, int defenseCount, int healCount){
         this.specialCount = specialCount; 
         this.attackCount = attackCount; 
         this.defenseCount = defenseCount; 
-        this.drawCount = drawCount; 
         this.healCount = healCount; 
-        this.hp = hp; 
         this.shield = 0; 
     }
 
@@ -33,13 +29,20 @@ public abstract class Card {
 
 
     //==================================PUBLIC METHOD=====================================//
-    public int GetHP(){
-        return 0; 
+    public int GetAttackCount(){
+        return attackCount;
     }
 
-    public void SetHp(int hp){
-        this.hp = hp; 
+    public int GetSpecialCount(){
+        return specialCount;
     }
+    public int GetDefenseCount(){
+        return defenseCount;
+    }
+    public int GetHealCount(){
+        return healCount;
+    }
+
 
     public int GetShield(){
         return 0; 
@@ -49,19 +52,26 @@ public abstract class Card {
         this.shield = shield; 
     }
 
-    public void Attack(int attack){
-        this.hp -= attack; 
+    public void Attack(int attack, int hp){
+        hp -= attack; 
     }
 
-    public void Defense(){
-        
+    public void DefenseSheild(int attack, int hp){
+        if(shield>0){
+            shield -= attack; 
+            if(shield<0){
+                shield+= attack; 
+                attack -= shield; 
+                shield = 0;
+                hp -= attack;  
+            }
+        }
     }
 
-    public void Heal(int hp){
-        this.hp += hp;
+    public void Heal(int heal, int hp){
+        hp += heal;
     }
 
     public abstract void MightyPower(int hp);
-     
-
+    
 }
