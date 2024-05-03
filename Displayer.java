@@ -43,13 +43,27 @@ public class Displayer {
         System.out.println("--------------------------------------------------------------");
         System.out.println("Player "+ player+ " pick a deck: ");
     }
-    
-    public void ShowDiscard(){
 
-    }
 
-    public void ShowHP(){
-
+    public void ShowHP(int hp){
+        System.out.println("=============== HP SCALE ===============");
+        System.out.println("-----------------------------------------");
+        if(hp == 10){
+            for(int i=0; i<hp; i++){
+                System.out.printf("%-4s","|");
+            }
+            System.out.println("|");
+        }
+        else{
+            for(int i=0; i<10-hp;i++){
+                System.out.print("| X ");
+            }
+            for(int i=0; i<hp; i++){
+                System.out.printf("%-4s","|");
+            }
+            System.out.println("|");
+        }
+        System.out.println("-----------------------------------------");
     }
 
     public void ShowShield(){

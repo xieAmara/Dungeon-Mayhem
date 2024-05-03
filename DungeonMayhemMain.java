@@ -37,10 +37,14 @@ public class DungeonMayhemMain {
             dm.CreateDeck(deckChoice - 1);
             deckTrack[deckChoice - 1] = true; 
         }
-        
+        while(!dm.HasGameWinner()){
+            displayer.ShowHP(7);
+            for(int i=0; i<5; i++){
+                displayer.ShowCard(dm.Draw());
+            }
+            break;
 
-
-        displayer.ShowCard(dm.GetDeck()[1][4]);
+        }
     }
 
 

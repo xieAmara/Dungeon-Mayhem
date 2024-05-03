@@ -43,7 +43,6 @@ public abstract class Card {
         return healCount;
     }
 
-
     public int GetShield(){
         return 0; 
     }
