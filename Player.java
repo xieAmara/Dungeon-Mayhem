@@ -3,12 +3,14 @@ public class Player {
     private int playerType; 
     private Card[] currPlayingCards;
     private int playerShield;
+    private int cardCount; 
     //==================================CONSTRUCTOR=======================================//
     public Player(int playerType){
         playerHp = 10; 
         playerShield = 0; 
         this.playerType = playerType;
-        this.currPlayingCards = new Card[7];
+        this.currPlayingCards = new Card[5];
+        this.cardCount = 0; 
     }
 
     //==================================PRIVATE METHOD====================================//
@@ -25,12 +27,23 @@ public class Player {
         return this.playerShield;
     }
 
+    public int GetCardCount(){
+        return this.cardCount; 
+    }
+
+    public void SetCardCount(int cardCount){
+        this.cardCount = cardCount;
+    }
     public void SetPlayerShield(int shield){
         this.playerShield = shield;
     }
 
     public void SetPlayerHp(int hp){
         this.playerHp = hp;
+    }
+
+    public int GetCurrPlayingCardNum(){
+        return this.currPlayingCards.length; 
     }
     
 
@@ -40,6 +53,10 @@ public class Player {
 
     public void SetCurrPlayingCard(int pos, Card card){
         currPlayingCards[pos] = card; 
+    }
+
+    public void SetCurrPlayingCard(Card[] card){
+        currPlayingCards = card;
     }
 
     public void CreateDeck(int heroType, Card[][] deck){

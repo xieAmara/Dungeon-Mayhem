@@ -76,7 +76,7 @@ public class Displayer {
     }
 
     public void ShowShield(int shield){
-        System.out.println("=============== SHEILD ===============");
+        System.out.println("================ SHEILD ================");
         if(shield==0){
             System.out.println("You have no shields at the moment");
         }
@@ -94,5 +94,9 @@ public class Displayer {
             }
             System.out.println("-");
         }
+    }
+
+    public void ShowPlayer(Player p){
+
     }
 }

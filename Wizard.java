@@ -3,7 +3,7 @@ public class Wizard extends Card {
         super( specialCount,  attackCount,  defenseCount,  healCount);
     }
 
-    public void MightyPower(int hp){
+    public void MightyPower(int special, Player p){
         
     }
 }

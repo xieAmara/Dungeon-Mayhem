@@ -36,23 +36,54 @@ public class DungeonMayhemMain {
             dm.SetCurrPlayer(dm.GetAllPlayer()[i]);
             dm.CreateDeck(deckChoice - 1);
             deckTrack[deckChoice - 1] = true; 
+            for(int j=0; j<5; j++){
+                dm.AddCardToHand(dm.Draw());
+                dm.GetCurrPlayer().SetCardCount(dm.GetCurrPlayer().GetCardCount() + 1);
+            }
         }
         while(!dm.HasGameWinner()){
-            displayer.ShowHP(dm.GetCurrPlayer().GetPlayerHp());
-            displayer.ShowShield(dm.GetCurrPlayer().GetPlayerShield());
-            for(int i=0; i<5; i++){
-                dm.Draw();
+            Player currPlayer = dm.GetCurrPlayer();
+            System.out.println("=============== Draw Phase ==============");
+            for(int j=0; j<2; j++){
+                dm.ExtendCardDeck();
+                dm.AddCardToHand(dm.Draw());
+                currPlayer.SetCardCount(currPlayer.GetCardCount() + 1);
             }
-            displayer.ShowCardHand(dm.GetCurrPlayer().GetcurrPlayingCards());
-            System.out.print("Choose a card to play action: ");
-            int cardOpt = input.nextInt();
-            System.out.print("Choose a player to play action:  ");
-            int playerOpt = input.nextInt();
+            displayer.ShowHP(currPlayer.GetPlayerHp());
+            displayer.ShowShield(currPlayer.GetPlayerShield());
+            displayer.ShowCardHand(currPlayer.GetcurrPlayingCards());
 
-            dm.Play(dm.GetCurrPlayer().GetcurrPlayingCards()[cardOpt-1], dm.GetAllPlayer()[playerOpt-1]);
-            // displayer.ShowHP(dm.GetAllPlayer()[playerOpt-1].GetPlayerHp());
-            // displayer.ShowShield(dm.GetCurrPlayer().GetPlayerShield());
-            // displayer.ShowHP(dm.GetCurrPlayer().GetPlayerHp());
+            System.out.println("=============== Action Phase ==============");
+            int cardOpt, playerOpt; 
+            System.out.print("How many action will you play (minimum 0 maximum 2): ");
+            int actionOpt = input.nextInt();
+            for(int i=0; i<actionOpt; i++){
+                System.out.print("Choose a card to play action: ");
+                cardOpt = input.nextInt();
+                System.out.print("Choose a player to play action:  ");
+                playerOpt = input.nextInt();
+                dm.Play(currPlayer.GetcurrPlayingCards()[cardOpt-1], dm.GetAllPlayer()[playerOpt-1]);
+                dm.Discard(cardOpt-1);
+                displayer.ShowCardHand(currPlayer.GetcurrPlayingCards());
+            }
+
+            System.out.println("=============== Discard Phase ==============");
+            if(currPlayer.GetCurrPlayingCardNum() > 7){
+                int discardCount = currPlayer.GetCurrPlayingCardNum() - 7; 
+                for(int i=0; i<discardCount; i++){
+                    displayer.ShowCardHand(currPlayer.GetcurrPlayingCards());
+                    System.out.print("Pick a card to discard: ");
+                    int discardOpt = input.nextInt(); 
+                    dm.Discard(discardOpt-1);
+                }
+            }else{
+                System.out.println("You have less than 7 cards, you do not need to discard any");
+            }
+
+            displayer.ShowHP(currPlayer.GetPlayerHp());
+            displayer.ShowShield(currPlayer.GetPlayerShield());
+            displayer.ShowCardHand(currPlayer.GetcurrPlayingCards());
+
             break;
         }
     }

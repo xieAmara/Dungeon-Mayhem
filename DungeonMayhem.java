@@ -5,15 +5,13 @@ public class DungeonMayhem{
     private Player[] allPlayers;
     private int numPlayer;
     private int remainPlayers;   
-    private int cardCount; // make sure later
 
     //==================================CONSTRUCTOR=======================================//
     public DungeonMayhem(int numPlayer){
         this.numPlayer = numPlayer;
         this.allPlayers = new Player[numPlayer];
         this.allDeck = new Card[4][20];   
-        this.remainPlayers = numPlayer; 
-        this.cardCount = 0; 
+        this.remainPlayers = numPlayer;  
     }
 
     //==================================PRIVATE METHOD====================================//
@@ -53,7 +51,7 @@ public class DungeonMayhem{
     }
 
     public void SwitchPlayer(){
-
+        
     }
 
     public void CreatePlayer(int pos, int heroType){
@@ -68,13 +66,23 @@ public class DungeonMayhem{
         return allDeck;
     }
 
+    public int GetCardDeckLength(int pos){
+        return allDeck[pos].length;
+    }
+
+    public void ExtendCardDeck(){
+        Card[] temp = new Card[ currPlayer.GetcurrPlayingCards().length + 1];
+        for(int i=0; i<currPlayer.GetcurrPlayingCards().length ; i++){
+            temp[i] = currPlayer.GetcurrPlayingCards()[i];  
+        }
+        currPlayer.SetCurrPlayingCard(temp);
+    }
+
     public Card Draw(){
         int currType = currPlayer.GetPlayerType();
         int cardPos = (int)(Math.random()*allDeck[currType].length);
 
         Card card = allDeck[currType][cardPos];
-        currPlayer.GetcurrPlayingCards()[cardCount] = card; 
-        cardCount++;
 
         Card[] temp = new Card[allDeck[currType].length - 1];
         int count = 0; 
@@ -84,14 +92,32 @@ public class DungeonMayhem{
                 count++;
             }
         }
-        
+        allDeck[currType] = temp;
         return card; 
+    }
+
+    public void AddCardToHand(Card card){
+        currPlayer.GetcurrPlayingCards()[currPlayer.GetCardCount()] = card;
+    }
+
+    public void Discard( int pos ){
+        Card[] temp = new Card[ currPlayer.GetcurrPlayingCards().length - 1];
+        int count = 0; 
+        for(int i=0; i<currPlayer.GetcurrPlayingCards().length ;i++){
+            if(i != pos){
+                temp[count] = currPlayer.GetcurrPlayingCards()[i];
+                count++;
+            }
+        }
+        currPlayer.SetCurrPlayingCard(temp);
+        currPlayer.SetCardCount(currPlayer.GetCardCount() - 1);
     }
 
     public void Play(Card card, Player p){
         card.Attack(card.GetAttackCount(), p);
         card.Heal(card.GetHealCount(),currPlayer);
         card.Defense(card.GetDefenseCount(), currPlayer);
+        card.MightyPower(card.GetSpecialCount(), p);
     }
 
     public boolean HasHpGone(){
@@ -119,7 +145,5 @@ public class DungeonMayhem{
         }
         return false;
     }
-
-
 
 }

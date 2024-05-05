@@ -7,7 +7,6 @@ public abstract class Card {
     private int specialCount; 
     private int attackCount; 
     private int defenseCount; 
-    private int drawCount; 
     private int healCount; 
 
     
@@ -53,8 +52,8 @@ public abstract class Card {
         }
     }
 
-    public void Defense(int shieldCount, Player p){
-        p.SetPlayerShield(shieldCount); 
+    public void Defense(int shield, Player p){
+        p.SetPlayerShield(p.GetPlayerShield() + shield ); 
     }
 
 
@@ -66,6 +65,6 @@ public abstract class Card {
         }
     }
 
-    public abstract void MightyPower(int hp);
+    public abstract void MightyPower(int special, Player p);
     
 }
