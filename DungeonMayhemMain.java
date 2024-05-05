@@ -32,8 +32,7 @@ public class DungeonMayhemMain {
                 displayer.DisplayDeckChoice(i+1);
                 deckChoice = input.nextInt();
             }
-            dm.CreatePlayer(i, deckChoice - 1);
-            dm.SetCurrPlayer(dm.GetAllPlayer()[i]);
+            dm.SetCurrPlayer(dm.CreatePlayer(i, deckChoice - 1));
             dm.CreateDeck(deckChoice - 1);
             deckTrack[deckChoice - 1] = true; 
             for(int j=0; j<5; j++){
@@ -41,8 +40,12 @@ public class DungeonMayhemMain {
                 dm.GetCurrPlayer().SetCardCount(dm.GetCurrPlayer().GetCardCount() + 1);
             }
         }
+        dm.SetCurrPlayer(dm.GetAllPlayer()[0]);
+        
         while(!dm.HasGameWinner()){
             Player currPlayer = dm.GetCurrPlayer();
+            displayer.ShowCardHand(currPlayer.GetcurrPlayingCards());
+            displayer.ShowPlayer(currPlayer);
             System.out.println("=============== Draw Phase ==============");
             for(int j=0; j<2; j++){
                 dm.ExtendCardDeck();
@@ -57,6 +60,10 @@ public class DungeonMayhemMain {
             int cardOpt, playerOpt; 
             System.out.print("How many action will you play (minimum 0 maximum 2): ");
             int actionOpt = input.nextInt();
+            while(actionOpt <0 || actionOpt>2){
+                System.out.println("ERROR! Invalid Option");
+            }
+
             for(int i=0; i<actionOpt; i++){
                 System.out.print("Choose a card to play action: ");
                 cardOpt = input.nextInt();
@@ -83,8 +90,7 @@ public class DungeonMayhemMain {
             displayer.ShowHP(currPlayer.GetPlayerHp());
             displayer.ShowShield(currPlayer.GetPlayerShield());
             displayer.ShowCardHand(currPlayer.GetcurrPlayingCards());
-
-            break;
+            dm.SwitchPlayer();
         }
     }
 

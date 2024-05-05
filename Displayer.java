@@ -2,6 +2,20 @@ public class Displayer {
     public Displayer(){
     }
 
+    private String PlayerType(Player p){
+        int type = p.GetPlayerType();
+        if(type == Card.ROGUE){
+            return "Rogue";
+        }
+        else if(type == Card.BARBARIAN){
+            return "Barbarian";
+        }
+        else if(type == Card.WIZARD){
+            return "Wizard";
+        }
+        return "Paladin";
+    }
+
     private String CardType(Card card){
         if(card instanceof Rogue){
             return "Rogue";
@@ -97,6 +111,7 @@ public class Displayer {
     }
 
     public void ShowPlayer(Player p){
-
+        System.out.printf("==================== Player %s =====================\n",PlayerType(p));
+        
     }
 }

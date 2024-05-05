@@ -51,11 +51,23 @@ public class DungeonMayhem{
     }
 
     public void SwitchPlayer(){
-        
+        for(int i=0; i<allPlayers.length;i++){
+            if(currPlayer.GetPlayerType() == allPlayers[i].GetPlayerType()){
+                if(i!=(allPlayers.length - 1)){
+                    currPlayer = allPlayers[i+1];
+                    break;
+                }
+                else{
+                    currPlayer = allPlayers[0];
+                    break;
+                }
+            }  
+        }
     }
 
-    public void CreatePlayer(int pos, int heroType){
+    public Player CreatePlayer(int pos, int heroType){
         allPlayers[pos] = new Player(heroType);
+        return allPlayers[pos];
     }
 
     public void CreateDeck(int heroType){
