@@ -133,21 +133,23 @@ public class DungeonMayhem{
     }
 
     public boolean HasHpGone(){
-        if(currPlayer.GetPlayerHp() == 0){
+        if(currPlayer.GetPlayerHp() <= 0){
             return true;
         }
         return false;
     }
 
-    public void RemovePlayer(int pos){
+    public void RemovePlayer(){
         Player[] temp = new Player[allPlayers.length - 1];
-        int count = 0; 
+        int count = 0;  
+
         for(int i=0; i<allPlayers.length ;i++){
-            if(i != pos){
+            if(allPlayers[i].GetPlayerType() != currPlayer.GetPlayerType()){
                 temp[count] = allPlayers[i];
                 count++;
             }
         }
+
         allPlayers = temp;
     }
 

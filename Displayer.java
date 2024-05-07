@@ -90,7 +90,8 @@ public class Displayer {
     }
 
     public void ShowShield(int shield){
-        System.out.println("================ SHEILD ================");
+        System.out.println("-------------------------------------------");
+        System.out.println("|====== SHEILD ===========================|");
         if(shield==0){
             System.out.println("You have no shields at the moment");
         }
@@ -111,7 +112,7 @@ public class Displayer {
     }
 
     public void ShowPlayer(Player p){
-        System.out.printf("==================== Player %s =====================\n",PlayerType(p));
+        System.out.printf("|               Player %s              |\n",PlayerType(p));
         
     }
 }
