@@ -43,70 +43,63 @@ public class DungeonMayhemMain {
         dm.SetCurrPlayer(dm.GetAllPlayer()[0]);
         
         while(!dm.HasGameWinner()){
-            Player currPlayer = dm.GetCurrPlayer();
-            displayer.ShowPlayer(currPlayer);
-            System.out.println("========================================");
-            System.out.println("|              DRAW PHASE              |");
-            System.out.println("========================================");
-            System.out.println("");
-            for(int j=0; j<2; j++){
-                dm.ExtendCardDeck();
-                dm.AddCardToHand(dm.Draw());
-                currPlayer.SetCardCount(currPlayer.GetCardCount() + 1);
-            }
-            displayer.ShowHP(currPlayer.GetPlayerHp());
-            System.out.println("");
-            displayer.ShowShield(currPlayer.GetPlayerShield());
-            System.out.println("");
-            displayer.ShowCardHand(currPlayer.GetcurrPlayingCards());
-            System.out.println("");
-
-            System.out.println("========================================");
-            System.out.println("|             ACTION PHASE             |");
-            System.out.println("========================================");
-            int cardOpt, playerOpt; 
-            System.out.print("How many action will you play (minimum 0 maximum 2): ");
-            int actionOpt = input.nextInt();
-            while(actionOpt <0 || actionOpt>2){
-                System.out.println("ERROR! Invalid Option");
-                System.out.print("How many action will you play (minimum 0 maximum 2): ");
-                actionOpt = input.nextInt();
-            }
-
-            for(int i=0; i<actionOpt; i++){
-                System.out.print("Choose a card to play action: ");
-                cardOpt = input.nextInt();
-                System.out.print("Choose a player to play action:  ");
-                playerOpt = input.nextInt();
-                dm.Play(currPlayer.GetcurrPlayingCards()[cardOpt-1], dm.GetAllPlayer()[playerOpt-1]);
-                dm.Discard(cardOpt-1);
-                displayer.ShowCardHand(currPlayer.GetcurrPlayingCards());
-            }
-
-            
-            if(currPlayer.GetCurrPlayingCardNum() > 7){
-                System.out.println("========================================");
-                System.out.println("|             DISCARD PHASE            |");
-                System.out.println("========================================");
-                System.out.println("");
-                int discardCount = currPlayer.GetCurrPlayingCardNum() - 7; 
-                for(int i=0; i<discardCount; i++){
-                    displayer.ShowCardHand(currPlayer.GetcurrPlayingCards());
-                    System.out.print("Pick a card to discard: ");
-                    int discardOpt = input.nextInt(); 
-                    dm.Discard(discardOpt-1);
-                }
-            }
-
-            displayer.ShowHP(currPlayer.GetPlayerHp());
-            displayer.ShowShield(currPlayer.GetPlayerShield());
-            displayer.ShowCardHand(currPlayer.GetcurrPlayingCards());
-
             if(dm.HasHpGone()){
                 dm.RemovePlayer();
             }else{
-                dm.SwitchPlayer();
-            }
+                Player currPlayer = dm.GetCurrPlayer();
+                displayer.ShowPlayer(currPlayer);
+                System.out.println("========================================");
+                System.out.println("|              DRAW PHASE              |");
+                System.out.println("========================================");
+                System.out.println("");
+                for(int j=0; j<2; j++){
+                    dm.ExtendCardDeck();
+                    dm.AddCardToHand(dm.Draw());
+                    currPlayer.SetCardCount(currPlayer.GetCardCount() + 1);
+                }
+                displayer.DisplayPlayerDetails(currPlayer.GetPlayerHp(), currPlayer.GetPlayerShield());
+                System.out.println("");
+                System.out.println("");
+
+                System.out.println("========================================");
+                System.out.println("|             ACTION PHASE             |");
+                System.out.println("========================================");
+                int cardOpt, playerOpt; 
+                System.out.print("How many action will you play (minimum 0 maximum 2): ");
+                int actionOpt = input.nextInt();
+                while(actionOpt <0 || actionOpt>2){
+                    System.out.println("ERROR! Invalid Option");
+                    System.out.print("How many action will you play (minimum 0 maximum 2): ");
+                    actionOpt = input.nextInt();
+                }
+
+                for(int i=0; i<actionOpt; i++){
+                    displayer.ShowCardHand(currPlayer.GetcurrPlayingCards());
+                    System.out.print("Choose a card to play action: ");
+                    cardOpt = input.nextInt();
+                    System.out.print("Choose a player to play action:  ");
+                    playerOpt = input.nextInt();
+                    dm.Play(currPlayer.GetcurrPlayingCards()[cardOpt-1], dm.GetAllPlayer()[playerOpt-1]);
+                    dm.Discard(cardOpt-1);
+                }
+
+                
+                if(currPlayer.GetCurrPlayingCardNum() > 7){
+                    System.out.println("========================================");
+                    System.out.println("|             DISCARD PHASE            |");
+                    System.out.println("========================================");
+                    System.out.println("");
+                    int discardCount = currPlayer.GetCurrPlayingCardNum() - 7; 
+                    for(int i=0; i<discardCount; i++){
+                        displayer.ShowCardHand(currPlayer.GetcurrPlayingCards());
+                        System.out.print("Pick a card to discard: ");
+                        int discardOpt = input.nextInt(); 
+                        dm.Discard(discardOpt-1);
+                    }
+                }
+                dm.SwitchPlayer();  
+            } 
         }
+        System.out.println("The winner of the game is: "+ dm.GetAllPlayer()[0]);
     }
 }

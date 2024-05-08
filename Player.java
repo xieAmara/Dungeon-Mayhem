@@ -55,8 +55,8 @@ public class Player {
         currPlayingCards[pos] = card; 
     }
 
-    public void SetCurrPlayingCard(Card[] card){
-        currPlayingCards = card;
+    public void SetCurrPlayingCards(Card[] cards){
+        currPlayingCards = cards;
     }
 
     public void CreateDeck(int heroType, Card[][] deck){

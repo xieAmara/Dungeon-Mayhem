@@ -67,15 +67,14 @@ public class Displayer {
         System.out.println("Player "+ player+ " pick a deck: ");
     }
 
-
-    public void ShowHP(int hp){
-        System.out.println("=============== HP SCALE ===============");
-        System.out.println("-----------------------------------------");
+    public void DisplayPlayerDetails(int hp, int shield){
+        System.out.println("|============== HP SCALE ===============|         |====== SHEILD ===========================|");
+        System.out.println("-----------------------------------------         -------------------------------------------");
         if(hp == 10){
             for(int i=0; i<hp; i++){
                 System.out.printf("%-4s","|");
             }
-            System.out.println("|");
+            System.out.print("|");
         }
         else{
             for(int i=0; i<10-hp;i++){
@@ -84,14 +83,9 @@ public class Displayer {
             for(int i=0; i<hp; i++){
                 System.out.printf("%-4s","|");
             }
-            System.out.println("|");
+            System.out.print("|");
         }
-        System.out.println("-----------------------------------------");
-    }
-
-    public void ShowShield(int shield){
-        System.out.println("-------------------------------------------");
-        System.out.println("|====== SHEILD ===========================|");
+        System.out.print("          ");
         if(shield==0){
             System.out.println("You have no shields at the moment");
         }
@@ -109,10 +103,11 @@ public class Displayer {
             }
             System.out.println("-");
         }
+        System.out.println("-----------------------------------------");
     }
 
     public void ShowPlayer(Player p){
-        System.out.printf("|               Player %s              |\n",PlayerType(p));
+        System.out.printf("| Player %s               |\n",PlayerType(p));
         
     }
 }

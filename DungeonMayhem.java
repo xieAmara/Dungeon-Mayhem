@@ -4,14 +4,12 @@ public class DungeonMayhem{
     private Card[][] allDeck; 
     private Player[] allPlayers;
     private int numPlayer;
-    private int remainPlayers;   
 
     //==================================CONSTRUCTOR=======================================//
     public DungeonMayhem(int numPlayer){
         this.numPlayer = numPlayer;
         this.allPlayers = new Player[numPlayer];
-        this.allDeck = new Card[4][20];   
-        this.remainPlayers = numPlayer;  
+        this.allDeck = new Card[4][20];    
     }
 
     //==================================PRIVATE METHOD====================================//
@@ -25,13 +23,13 @@ public class DungeonMayhem{
 
     public int NumPlayers(){
         return numPlayer;
-    }
+    } 
 
     public Player[] GetAllPlayer(){
         return allPlayers;
     }
 
-    public void SetCurrPlayer(Player currPlayer){
+    public void SetCurrPlayer(Player currPlayer){   
         this.currPlayer = currPlayer; 
     }
 
@@ -87,7 +85,7 @@ public class DungeonMayhem{
         for(int i=0; i<currPlayer.GetcurrPlayingCards().length ; i++){
             temp[i] = currPlayer.GetcurrPlayingCards()[i];  
         }
-        currPlayer.SetCurrPlayingCard(temp);
+        currPlayer.SetCurrPlayingCards(temp);
     }
 
     public Card Draw(){
@@ -121,7 +119,7 @@ public class DungeonMayhem{
                 count++;
             }
         }
-        currPlayer.SetCurrPlayingCard(temp);
+        currPlayer.SetCurrPlayingCards(temp);
         currPlayer.SetCardCount(currPlayer.GetCardCount() - 1);
     }
 
