@@ -85,7 +85,7 @@ public class Displayer {
             }
             System.out.print("|");
         }
-        System.out.print("          ");
+        System.out.print("         ");
         if(shield==0){
             System.out.println("You have no shields at the moment");
         }
