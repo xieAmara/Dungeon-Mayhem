@@ -1,8 +1,5 @@
 import java.util.Scanner; 
 public class DungeonMayhemMain {
-    /*
-     * Game starts here
-     */
      public static void main(String[] args) {
         DungeonMayhem dm; 
         Displayer displayer = new Displayer(); 
@@ -43,11 +40,18 @@ public class DungeonMayhemMain {
         dm.SetCurrPlayer(dm.GetAllPlayer()[0]);
         
         while(!dm.HasGameWinner()){
+            Player currPlayer = dm.GetCurrPlayer();
             if(dm.HasHpGone()){
-                dm.RemovePlayer();
-            }else{
-                Player currPlayer = dm.GetCurrPlayer();
+                System.out.println("========================================");
+                System.out.printf("|Player %-24s : Dead|\n",dm.GetCurrPlayerName());
+                System.out.println("========================================");
+                currPlayer.SetIsDead(true);
+            }
+            if(currPlayer.GetIsDead() == false){
                 displayer.ShowPlayer(currPlayer);
+                if(dm.GetCardDeckLength(currPlayer.GetPlayerType()) <= 5){
+                    dm.CreateDeck(currPlayer.GetPlayerType());
+                }
                 System.out.println("========================================");
                 System.out.println("|              DRAW PHASE              |");
                 System.out.println("========================================");
@@ -75,10 +79,34 @@ public class DungeonMayhemMain {
 
                 for(int i=0; i<actionOpt; i++){
                     displayer.ShowCardHand(currPlayer.GetcurrPlayingCards());
-                    System.out.print("Choose a card to play action: ");
-                    cardOpt = input.nextInt();
-                    System.out.print("Choose a player to play action:  ");
-                    playerOpt = input.nextInt();
+                    while(true){
+                        System.out.print("Choose a card to play action: ");
+                        cardOpt = input.nextInt();
+                        if(cardOpt<1 || cardOpt > currPlayer.GetCardCount()){
+                            System.out.println("ERROR! Invalid card option.");
+                        }
+                        else{
+                            break;
+                        }
+                    }
+                    while(true){
+                        System.out.println("Choose a player to play action:  ");
+                        displayer.ShowPlayers(dm.GetAllPlayer());
+                        System.out.print("Option: ");
+                        playerOpt = input.nextInt();
+                        if(playerOpt < 1 || playerOpt > dm.NumPlayers()){
+                            System.out.println("Invalid player option try again");
+                        }
+                        else if(dm.GetAllPlayer()[playerOpt-1].GetIsDead() == true){
+                            System.out.println("This player is dead choose another player");
+                        }
+                        else if(dm.GetAllPlayer()[playerOpt-1].GetPlayerType() == currPlayer.GetPlayerType()){
+                            System.out.println("You cannot place an action on yourself, please pick another player");
+                        }
+                        else{
+                            break;
+                        }
+                    }
                     dm.Play(currPlayer.GetcurrPlayingCards()[cardOpt-1], dm.GetAllPlayer()[playerOpt-1]);
                     dm.Discard(cardOpt-1);
                 }
@@ -90,16 +118,26 @@ public class DungeonMayhemMain {
                     System.out.println("========================================");
                     System.out.println("");
                     int discardCount = currPlayer.GetCurrPlayingCardNum() - 7; 
+                    int discardOpt = 0;
                     for(int i=0; i<discardCount; i++){
                         displayer.ShowCardHand(currPlayer.GetcurrPlayingCards());
-                        System.out.print("Pick a card to discard: ");
-                        int discardOpt = input.nextInt(); 
+                        while(true){
+                            System.out.print("Pick a card to discard: ");
+                            discardOpt = input.nextInt(); 
+                            if(discardOpt<1 || discardOpt>currPlayer.GetCardCount()){
+                                System.out.println("ERROR! Invalid card option.");
+                            }
+                            else{
+                                break;
+                            }
+                        }
                         dm.Discard(discardOpt-1);
                     }
-                }
-                dm.SwitchPlayer();  
+                } 
             } 
+            dm.SwitchPlayer(); 
         }
-        System.out.println("The winner of the game is: "+ dm.GetAllPlayer()[0]);
+        displayer.DisplayWinner(dm.GetAllPlayer()[0]);
+        
     }
 }

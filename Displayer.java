@@ -29,6 +29,13 @@ public class Displayer {
         return "Paladin";
     }
 
+    private String GetStatus(Player p){
+        if(p.GetIsDead()){
+            return "Dead";
+        }
+        return "Alive";
+    }
+
     public void GameHeader(){
         System.out.println("=======================================");
         System.out.println("|      WELCOME TO DUNGEON MAYHEM      |");
@@ -91,23 +98,36 @@ public class Displayer {
         }
         else{
             for(int i=0; i<shield; i++){
-                System.out.print("----");
-            }
-            System.out.println("-");
-            for(int i=0; i<shield; i++){
                 System.out.print("| S ");
             }
             System.out.println("|");
-            for(int i=0; i<shield; i++){
-                System.out.print("----");
-            }
-            System.out.println("-");
         }
-        System.out.println("-----------------------------------------");
+        System.out.println("-----------------------------------------         -------------------------------------------");
     }
 
     public void ShowPlayer(Player p){
-        System.out.printf("| Player %s               |\n",PlayerType(p));
-        
+        System.out.println("");
+        System.out.println("========================================");
+        System.out.printf("|Player %-31s|\n",PlayerType(p));
+        System.out.println("========================================");
+        System.out.println("");
+    }
+
+    public void ShowPlayers(Player[] players){
+        System.out.println(" ");
+        for(int i=0; i<players.length; i++){
+            String status = GetStatus(players[i]);
+            System.out.printf((i+1)+ " %-10s - status: %-5s\n",PlayerType(players[i]),status);
+        }
+    }
+
+    public void DisplayWinner(Player p){
+        System.out.println("========================================"); 
+        System.out.println("|                                      |");
+        System.out.println("|                                      |");
+        System.out.printf("| The Winner Is Player %-16s|\n",PlayerType(p));
+        System.out.println("|                                      |");
+        System.out.println("|                                      |");
+        System.out.println("========================================");
     }
 }

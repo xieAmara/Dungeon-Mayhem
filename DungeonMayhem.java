@@ -1,5 +1,7 @@
 public class DungeonMayhem{
 
+    final static int DECK_NOT_FOUND = -3; 
+
     private Player currPlayer; 
     private Card[][] allDeck; 
     private Player[] allPlayers;
@@ -13,7 +15,6 @@ public class DungeonMayhem{
     }
 
     //==================================PRIVATE METHOD====================================//
-
 
     //==================================PUBLIC METHOD======================================//
 
@@ -69,6 +70,7 @@ public class DungeonMayhem{
     }
 
     public void CreateDeck(int heroType){
+        allDeck[heroType] = new Card[20];
         GetCurrPlayer().CreateDeck(heroType, allDeck);
     }
 
@@ -76,8 +78,19 @@ public class DungeonMayhem{
         return allDeck;
     }
 
-    public int GetCardDeckLength(int pos){
-        return allDeck[pos].length;
+    public int GetCardDeckLength(int heroType){
+        switch(heroType){
+            case Card.ROGUE: 
+                return allDeck[Card.ROGUE].length;
+            case Card.BARBARIAN: 
+                return allDeck[Card.BARBARIAN].length;
+            case Card.WIZARD: 
+                return allDeck[Card.WIZARD].length;
+            case Card.PALADIN: 
+                return allDeck[Card.PALADIN].length;
+            default: 
+                return DECK_NOT_FOUND;
+        }
     }
 
     public void ExtendCardDeck(){
@@ -137,22 +150,14 @@ public class DungeonMayhem{
         return false;
     }
 
-    public void RemovePlayer(){
-        Player[] temp = new Player[allPlayers.length - 1];
-        int count = 0;  
-
-        for(int i=0; i<allPlayers.length ;i++){
-            if(allPlayers[i].GetPlayerType() != currPlayer.GetPlayerType()){
-                temp[count] = allPlayers[i];
+    public boolean HasGameWinner(){
+        int count = 0; 
+        for(int i=0; i<allPlayers.length; i++){
+            if(allPlayers[i].GetIsDead() == false){
                 count++;
             }
         }
-
-        allPlayers = temp;
-    }
-
-    public boolean HasGameWinner(){
-        if(allPlayers.length == 1){
+        if(count == 1){
             return true; 
         }
         return false;

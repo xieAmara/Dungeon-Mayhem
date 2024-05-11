@@ -4,6 +4,8 @@ public class Player {
     private Card[] currPlayingCards;
     private int playerShield;
     private int cardCount; 
+    private boolean isDead;
+
     //==================================CONSTRUCTOR=======================================//
     public Player(int playerType){
         playerHp = 10; 
@@ -11,12 +13,17 @@ public class Player {
         this.playerType = playerType;
         this.currPlayingCards = new Card[5];
         this.cardCount = 0; 
+        this.isDead = false; 
     }
 
     //==================================PRIVATE METHOD====================================//
 
     public int GetPlayerType(){
         return this.playerType;
+    }
+
+    public boolean GetIsDead(){
+        return this.isDead; 
     }
 
     public int GetPlayerHp(){
@@ -40,6 +47,10 @@ public class Player {
 
     public void SetPlayerHp(int hp){
         this.playerHp = hp;
+    }
+
+    public void SetIsDead(boolean isDead){
+        this.isDead = isDead; 
     }
 
     public int GetCurrPlayingCardNum(){
