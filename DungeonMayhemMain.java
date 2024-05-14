@@ -138,6 +138,7 @@ public class DungeonMayhemMain {
             dm.SwitchPlayer(); 
         }
         displayer.DisplayWinner(dm.GetAllPlayer()[0]);
-        
+    input.close();  
     }
+    
 }

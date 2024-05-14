@@ -2,7 +2,7 @@ public class Displayer {
     public Displayer(){
     }
 
-    private String PlayerType(Player p){
+    private String playerType(Player p){
         int type = p.GetPlayerType();
         if(type == Card.ROGUE){
             return "Rogue";
@@ -16,7 +16,7 @@ public class Displayer {
         return "Paladin";
     }
 
-    private String CardType(Card card){
+    private String cardType(Card card){
         if(card instanceof Rogue){
             return "Rogue";
         }
@@ -29,7 +29,7 @@ public class Displayer {
         return "Paladin";
     }
 
-    private String GetStatus(Player p){
+    private String getStatus(Player p){
         if(p.GetIsDead()){
             return "Dead";
         }
@@ -47,7 +47,7 @@ public class Displayer {
         String defense = "defense : "+Integer.toString(card.GetDefenseCount());
         String special = "special : "+Integer.toString(card.GetSpecialCount());
         String heal = "heal : "+Integer.toString(card.GetHealCount());
-        String cardInfo = CardType(card) +" "+ Integer.toString(cardPos);
+        String cardInfo = cardType(card) +" "+ Integer.toString(cardPos);
         System.out.println("------------------------------");
         System.out.printf("|%-28s|\n", cardInfo);
         System.out.printf("|%28s|\n",attack);
@@ -108,7 +108,7 @@ public class Displayer {
     public void ShowPlayer(Player p){
         System.out.println("");
         System.out.println("========================================");
-        System.out.printf("|Player %-31s|\n",PlayerType(p));
+        System.out.printf("|Player %-31s|\n",playerType(p));
         System.out.println("========================================");
         System.out.println("");
     }
@@ -116,8 +116,8 @@ public class Displayer {
     public void ShowPlayers(Player[] players){
         System.out.println(" ");
         for(int i=0; i<players.length; i++){
-            String status = GetStatus(players[i]);
-            System.out.printf((i+1)+ " %-10s - status: %-5s\n",PlayerType(players[i]),status);
+            String status = getStatus(players[i]);
+            System.out.printf((i+1)+ " %-10s - status: %-5s\n",playerType(players[i]),status);
         }
     }
 
@@ -125,7 +125,7 @@ public class Displayer {
         System.out.println("========================================"); 
         System.out.println("|                                      |");
         System.out.println("|                                      |");
-        System.out.printf("| The Winner Is Player %-16s|\n",PlayerType(p));
+        System.out.printf("| The Winner Is Player %-16s|\n",playerType(p));
         System.out.println("|                                      |");
         System.out.println("|                                      |");
         System.out.println("========================================");
