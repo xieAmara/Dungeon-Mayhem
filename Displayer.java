@@ -2,6 +2,14 @@ public class Displayer {
     public Displayer(){
     }
 
+    private int rowNum(int len){
+        if(len == 4 || len/4 == 0){
+            return 1; 
+        }else{
+            return 1 + rowNum(len-4);
+        }
+    }
+
     private String playerType(Player p){
         int type = p.GetPlayerType();
         if(type == Card.ROGUE){
@@ -36,6 +44,41 @@ public class Displayer {
         return "Alive";
     }
 
+    private void printCards(Card[] cards, int num,int count){
+        for(int j = 0; j < num; j++){
+            System.out.print("------------------------------     ");
+        }
+        System.out.println(" ");
+        for(int j = 0; j < num; j++){
+            String cardInfo = cardType(cards[count + j]) +" "+ Integer.toString(count+j+1);
+            System.out.printf("|%-28s|     ", cardInfo);
+        }
+        System.out.println(" ");
+        for(int j = 0; j < num; j++){
+            String attack = "attack : "+Integer.toString(cards[count + j].GetAttackCount());
+            System.out.printf("|%28s|     ",attack);
+        }
+        System.out.println(" ");
+        for(int j = 0; j < num; j++){
+            String defense = "defense : "+Integer.toString(cards[count + j].GetDefenseCount());
+            System.out.printf("|%28s|     ",defense);
+        }
+        System.out.println(" ");
+        for(int j = 0; j < num; j++){
+            String special = "special : "+Integer.toString(cards[count + j].GetSpecialCount());
+            System.out.printf("|%28s|     ",special);
+        }
+        System.out.println(" ");
+        for(int j = 0; j < num; j++){
+            String heal = "heal : "+Integer.toString(cards[count + j].GetHealCount());
+            System.out.printf("|%28s|     ",heal);
+        }
+        System.out.println(" ");
+        for(int j = 0; j < num; j++){
+            System.out.print("------------------------------     ");
+        }
+    }
+
     public void GameHeader(){
         System.out.println("=======================================");
         System.out.println("|      WELCOME TO DUNGEON MAYHEM      |");
@@ -59,11 +102,21 @@ public class Displayer {
     }
 
     public void ShowCardHand(Card[] cards){
-        for(int i = 0; i < cards.length; i++){
-            if(cards[i] != null){
-                ShowCard(cards[i], i+1);
+        int rows = rowNum(cards.length);
+        int col = cards.length; 
+        int count = 0; 
+        for(int i=0; i<rows; i++){
+            if(col >= 4){
+                printCards(cards, 4, count);
+                System.out.println(" ");
             }
+            else{
+                printCards(cards, col, count);
+            }
+            count += 4; 
+            col -=4;
         }
+        System.out.println("");
     }
 
     public void DisplayDeckChoice(int player){

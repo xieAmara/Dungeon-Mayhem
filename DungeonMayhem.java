@@ -11,7 +11,7 @@ public class DungeonMayhem{
     public DungeonMayhem(int numPlayer){
         this.numPlayer = numPlayer;
         this.allPlayers = new Player[numPlayer];
-        this.allDeck = new Card[4][20];    
+        this.allDeck = new Card[4][];    
     }
 
     //==================================PRIVATE METHOD====================================//
@@ -28,6 +28,10 @@ public class DungeonMayhem{
 
     public Player[] GetAllPlayer(){
         return allPlayers;
+    }
+
+    public Card[][] GetDeck(){
+        return allDeck;
     }
 
     public void SetCurrPlayer(Player currPlayer){   
@@ -70,12 +74,8 @@ public class DungeonMayhem{
     }
 
     public void CreateDeck(int heroType){
-        allDeck[heroType] = new Card[20];
+        allDeck[heroType] = new Card[28];
         GetCurrPlayer().CreateDeck(heroType, allDeck);
-    }
-
-    public Card[][] GetDeck(){
-        return allDeck;
     }
 
     public int GetCardDeckLength(int heroType){

@@ -71,26 +71,44 @@ public class Player {
     }
 
     public void CreateDeck(int heroType, Card[][] deck){
-        for(int i=0; i<20; i++){
+        for(int i=0; i<28; i++){
             int attackCount, specialCount, defenseCount, healCount;
-            do{
-                attackCount = (int)(Math.random()*4); 
-                specialCount = (int)(Math.random()*2);
-                defenseCount = (int)(Math.random()*3); 
-                healCount = (int)(Math.random()*2); 
-            }while(attackCount==0 && specialCount==0 && defenseCount==0 & healCount==0);
 
             switch(heroType){
                 case Card.ROGUE: 
+                    do{
+                        attackCount = (int)(Math.random()*2); 
+                        specialCount = (int)(Math.random()*2);
+                        defenseCount = (int)(Math.random()*2); 
+                        healCount = (int)(Math.random()*2); 
+                    }while(attackCount==0 && specialCount==0 && defenseCount==0 && healCount==0);
                     deck[Card.ROGUE][i] = new Rogue(specialCount, attackCount, defenseCount, healCount);
                     break;
                 case Card.BARBARIAN: 
+                    do{
+                        attackCount = (int)(Math.random()*4); 
+                        specialCount = (int)(Math.random()*1);
+                        defenseCount = (int)(Math.random()*2); 
+                        healCount = (int)(Math.random()*2); 
+                    }while(attackCount==0 && specialCount==0 && defenseCount==0 && healCount==0);
                     deck[Card.BARBARIAN][i] = new Barbarian(specialCount, attackCount, defenseCount, healCount);
                     break;
                 case Card.WIZARD: 
+                    do{
+                        attackCount = (int)(Math.random()*2); 
+                        specialCount = (int)(Math.random()*3);
+                        defenseCount = (int)(Math.random()*2); 
+                        healCount = (int)(Math.random()*3); 
+                    }while(attackCount==0 && specialCount==0 && defenseCount==0 && healCount==0);
                     deck[Card.WIZARD][i] = new Wizard(specialCount, attackCount, defenseCount, healCount);
                     break;
                 case Card.PALADIN: 
+                    do{
+                        attackCount = (int)(Math.random()*4); 
+                        specialCount = (int)(Math.random()*1);
+                        defenseCount = (int)(Math.random()*4); 
+                        healCount = (int)(Math.random()*2); 
+                    }while(attackCount==0 && specialCount==0 && defenseCount==0 && healCount==0);
                     deck[Card.PALADIN][i] = new Paladin(specialCount, attackCount, defenseCount, healCount);
             }
         }
