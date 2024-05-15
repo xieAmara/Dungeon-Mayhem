@@ -56,8 +56,6 @@ public abstract class Card {
         p.SetPlayerShield(p.GetPlayerShield() + shield ); 
     }
 
-
-
     public void Heal(int heal, Player p){
         p.SetPlayerHp(p.GetPlayerHp()+heal);
         if(p.GetPlayerHp()>10){

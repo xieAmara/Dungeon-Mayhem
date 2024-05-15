@@ -6,6 +6,6 @@ public class Barbarian extends Card {
     }
 
     public void MightyPower(int special, Player p){
-        
+        p.SetPlayerHp(p.GetPlayerHp + p.GetAttackCount);
     }
 }

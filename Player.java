@@ -41,6 +41,7 @@ public class Player {
     public void SetCardCount(int cardCount){
         this.cardCount = cardCount;
     }
+    
     public void SetPlayerShield(int shield){
         this.playerShield = shield;
     }
