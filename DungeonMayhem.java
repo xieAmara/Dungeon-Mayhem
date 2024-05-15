@@ -14,8 +14,6 @@ public class DungeonMayhem{
         this.allDeck = new Card[4][];    
     }
 
-    //==================================PRIVATE METHOD====================================//
-
     //==================================PUBLIC METHOD======================================//
 
     public Player GetCurrPlayer(){
@@ -53,6 +51,7 @@ public class DungeonMayhem{
         return null;
     }
 
+    //MADE BY AMARA
     public void SwitchPlayer(){
         for(int i=0; i<allPlayers.length;i++){
             if(currPlayer.GetPlayerType() == allPlayers[i].GetPlayerType()){
@@ -68,16 +67,19 @@ public class DungeonMayhem{
         }
     }
 
+    //MADE BY AMARA
     public Player CreatePlayer(int pos, int heroType){
         allPlayers[pos] = new Player(heroType);
         return allPlayers[pos];
     }
 
+    //MADE BY AMARA
     public void CreateDeck(int heroType){
         allDeck[heroType] = new Card[28];
         GetCurrPlayer().CreateDeck(heroType, allDeck);
     }
 
+    //MADE BY AMARA
     public int GetCardDeckLength(int heroType){
         switch(heroType){
             case Card.ROGUE: 
@@ -93,6 +95,7 @@ public class DungeonMayhem{
         }
     }
 
+    //MADE BY AMARA
     public void ExtendCardDeck(){
         Card[] temp = new Card[ currPlayer.GetcurrPlayingCards().length + 1];
         for(int i=0; i<currPlayer.GetcurrPlayingCards().length ; i++){
@@ -101,6 +104,7 @@ public class DungeonMayhem{
         currPlayer.SetCurrPlayingCards(temp);
     }
 
+    //MADE BY AMARA
     public Card Draw(){
         int currType = currPlayer.GetPlayerType();
         int cardPos = (int)(Math.random()*allDeck[currType].length);
@@ -119,10 +123,12 @@ public class DungeonMayhem{
         return card; 
     }
 
+    //MADE BY AMARA
     public void AddCardToHand(Card card){
         currPlayer.GetcurrPlayingCards()[currPlayer.GetCardCount()] = card;
     }
 
+    //MADE BY AMARA
     public void Discard( int pos ){
         Card[] temp = new Card[ currPlayer.GetcurrPlayingCards().length - 1];
         int count = 0; 
@@ -136,6 +142,7 @@ public class DungeonMayhem{
         currPlayer.SetCardCount(currPlayer.GetCardCount() - 1);
     }
 
+    //MADE BY AMARA
     public void Play(Card card, Player p){
         card.Attack(card.GetAttackCount(), p);
         card.Heal(card.GetHealCount(),currPlayer);
@@ -143,6 +150,7 @@ public class DungeonMayhem{
         card.MightyPower(card.GetSpecialCount(), p);
     }
 
+    //MADE BY AMARA
     public boolean HasHpGone(){
         if(currPlayer.GetPlayerHp() <= 0){
             return true;
@@ -150,6 +158,7 @@ public class DungeonMayhem{
         return false;
     }
 
+    //MADE BY AMARA
     public boolean HasGameWinner(){
         int count = 0; 
         for(int i=0; i<allPlayers.length; i++){

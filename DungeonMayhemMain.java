@@ -69,11 +69,11 @@ public class DungeonMayhemMain {
                 System.out.println("|             ACTION PHASE             |");
                 System.out.println("========================================");
                 int cardOpt, playerOpt; 
-                System.out.print("How many action will you play (minimum 1 maximum 3): ");
+                System.out.print("How many action will you play (minimum 1 maximum 2): ");
                 int actionOpt = input.nextInt();
-                while(actionOpt <1 || actionOpt>3){
+                while(actionOpt <1 || actionOpt>2){
                     System.out.println("ERROR! Invalid Option");
-                    System.out.print("How many action will you play (minimum 1 maximum 3): ");
+                    System.out.print("How many action will you play (minimum 1 maximum 2): ");
                     actionOpt = input.nextInt();
                 }
 
