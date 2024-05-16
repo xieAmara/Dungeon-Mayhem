@@ -7,8 +7,6 @@ public class Paladin extends Card{
     }
     
     public void MightyPower(int special, Player p) {
-        for (int i = 0; i < p.GetAllPlayer; i++) {
-            p.Player(i).setPlayerShield(0);
-        }
+        
     }
 }
