@@ -120,6 +120,7 @@ public class Displayer {
     public void DisplayPlayerDetails(int hp, int shield){
         System.out.println("|============== HP SCALE ===============|         |====== SHEILD ===========================|");
         System.out.println("-----------------------------------------         -------------------------------------------");
+        // Display HP 
         if(hp == 10){
             for(int i=0; i<hp; i++){
                 System.out.printf("%-4s","|");
@@ -136,6 +137,8 @@ public class Displayer {
             System.out.print("|");
         }
         System.out.print("         ");
+
+        // Display Shield
         if(shield==0){
             System.out.println("You have no shields at the moment");
         }
