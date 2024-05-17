@@ -23,7 +23,7 @@ public class Player {
     }
 
     public boolean GetIsDead(){
-        return this.isDead; 
+        return this.isDead;     
     }
 
     public int GetPlayerHp(){
@@ -116,3 +116,7 @@ public class Player {
         }
     }
 }
+
+
+
+
