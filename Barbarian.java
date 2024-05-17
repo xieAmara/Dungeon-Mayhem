@@ -5,7 +5,7 @@ public class Barbarian extends Card {
         super( specialCount,  attackCount,  defenseCount,  healCount);
     }
 
-    public void MightyPower(int special, Player p){
+    public void MightyPower(int special,Player p, Player[] players){
         p.SetPlayerHp(p.GetPlayerHp() + super.GetAttackCount());
     }
 }

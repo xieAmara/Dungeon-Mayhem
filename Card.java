@@ -63,6 +63,6 @@ public abstract class Card {
         }
     }
 
-    public abstract void MightyPower(int special, Player p);
+    public abstract void MightyPower(int special,Player p, Player[] players);
     
 }

@@ -3,7 +3,11 @@ public class Wizard extends Card {
         super( specialCount,  attackCount,  defenseCount,  healCount);
     }
 
-    public void MightyPower(int special, Player p){
-      
+    public void MightyPower(int special,Player p, Player[] players){
+        for(int i=0; i<players.length; i++){
+            if(i != Card.WIZARD){
+                players[i].SetPlayerHp(players[i].GetPlayerHp()-3);
+            }
+        }
     }
 }

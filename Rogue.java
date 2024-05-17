@@ -7,7 +7,7 @@ public class Rogue extends Card {
         super( specialCount,  attackCount,  defenseCount,  healCount);
     }
 
-    public void MightyPower(int special, Player p){
+    public void MightyPower(int special,Player p, Player[] players){
         
     }
 }

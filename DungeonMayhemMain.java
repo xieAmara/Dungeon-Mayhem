@@ -107,7 +107,7 @@ public class DungeonMayhemMain {
                             break;
                         }
                     }
-                    dm.Play(currPlayer.GetcurrPlayingCards()[cardOpt-1], dm.GetAllPlayer()[playerOpt-1]);
+                    dm.Play(currPlayer.GetcurrPlayingCards()[cardOpt-1], dm.GetAllPlayer()[playerOpt-1], dm.GetAllPlayer());
                     dm.Discard(cardOpt-1);
                 }
 

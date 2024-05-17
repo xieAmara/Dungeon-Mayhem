@@ -143,11 +143,11 @@ public class DungeonMayhem{
     }
 
     //MADE BY AMARA
-    public void Play(Card card, Player p){
+    public void Play(Card card, Player p, Player[] players){
         card.Attack(card.GetAttackCount(), p);
         card.Heal(card.GetHealCount(),currPlayer);
         card.Defense(card.GetDefenseCount(), currPlayer);
-        card.MightyPower(card.GetSpecialCount(), p);
+        card.MightyPower(card.GetSpecialCount(), p, players);
     }
 
     //MADE BY AMARA
