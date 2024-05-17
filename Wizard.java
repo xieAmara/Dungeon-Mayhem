@@ -4,9 +4,11 @@ public class Wizard extends Card {
     }
 
     public void MightyPower(int special,Player p, Player[] players){
-        for(int i=0; i<players.length; i++){
-            if(i != Card.WIZARD){
-                players[i].SetPlayerHp(players[i].GetPlayerHp()-3);
+        if(special != 0){
+            for(int i=0; i<players.length; i++){
+                if(i != Card.WIZARD){
+                    players[i].SetPlayerHp(players[i].GetPlayerHp()-3);
+                }
             }
         }
     }
