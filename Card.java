@@ -14,6 +14,7 @@ public abstract class Card {
     public Card(){
     }
 
+    // DEVELOPED BY: BEAUTY
     public Card(int specialCount, int attackCount, int defenseCount, int healCount){
         this.specialCount = specialCount; 
         this.attackCount = attackCount; 
@@ -21,25 +22,29 @@ public abstract class Card {
         this.healCount = healCount;  
     }
 
-    //==================================PRIVATE METHOD====================================//
-
-
-
     //==================================PUBLIC METHOD=====================================//
+
+    // DEVELOPED BY: BEAUTY
     public int GetAttackCount(){
         return this.attackCount;
     }
 
+    // DEVELOPED BY: BEAUTY
     public int GetSpecialCount(){
         return this.specialCount;
     }
+
+    // DEVELOPED BY: BEAUTY
     public int GetDefenseCount(){
         return this.defenseCount;
     }
+
+    // DEVELOPED BY: BEAUTY
     public int GetHealCount(){
         return this.healCount;
     }
 
+    // DEVELOPED BY: BEAUTY
     public void Attack(int attack, Player p){
         int shield = p.GetPlayerShield();
         if(shield>attack){
@@ -52,10 +57,12 @@ public abstract class Card {
         }
     }
 
+    // DEVELOPED BY: BEAUTY
     public void Defense(int shield, Player p){
         p.SetPlayerShield(p.GetPlayerShield() + shield ); 
     }
 
+    // DEVELOPED BY: BEAUTY
     public void Heal(int heal, Player p){
         p.SetPlayerHp(p.GetPlayerHp()+heal);
         if(p.GetPlayerHp()>10){
@@ -63,6 +70,7 @@ public abstract class Card {
         }
     }
 
+    // DEVELOPED BY: BEAUTY
     public abstract void MightyPower(int special,Player p, Player[] players);
     
 }

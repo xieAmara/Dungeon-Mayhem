@@ -5,6 +5,9 @@ public class DungeonMayhemMain {
         Displayer displayer = new Displayer(); 
         Scanner input = new Scanner(System.in);
 
+
+        //====HOME PAGE====//
+        // DEVELOPED BY: AMARA
         displayer.GameHeader();
         System.out.print("How many players? (minimum 2, maximum 4): ");
         int player = input.nextInt();
@@ -39,23 +42,37 @@ public class DungeonMayhemMain {
         }
         dm.SetCurrPlayer(dm.GetAllPlayer()[0]);
         
+        //=====GAME PAGE WHILE LOOP=====//
+        // DEVELOPED BY: AMARA
         while(!dm.HasGameWinner()){
             Player currPlayer = dm.GetCurrPlayer();
+
+            //=====CHECK PLAYER STATUS=====//
+            // DEVELOPED BY: BEAUTY
             if(dm.HasHpGone()){
                 System.out.println("========================================");
                 System.out.printf("|Player %-24s : Dead|\n",dm.GetCurrPlayerName());
                 System.out.println("========================================");
                 currPlayer.SetIsDead(true);
             }
+
+
             if(currPlayer.GetIsDead() == false){
+
+                //=====CREATE DECK FOR PLAYER=====//
+                // DEVELOPED BY: AMARA
                 displayer.ShowPlayer(currPlayer);
                 if(dm.GetCardDeckLength(currPlayer.GetPlayerType()) <= 5){
                     dm.CreateDeck(currPlayer.GetPlayerType());
                 }
+
+                //=====DRAW PHASE=====//
                 System.out.println("========================================");
                 System.out.println("|              DRAW PHASE              |");
                 System.out.println("========================================");
                 System.out.println("");
+
+                // DEVELOPED BY: AMARA
                 for(int j=0; j<2; j++){
                     dm.ExtendCardDeck();
                     dm.AddCardToHand(dm.Draw());
@@ -65,6 +82,9 @@ public class DungeonMayhemMain {
                 System.out.println("");
                 System.out.println("");
 
+
+                //=====ACTION PHASE=====//
+                // DEVELOPED BY: BEAUTY 
                 System.out.println("========================================");
                 System.out.println("|             ACTION PHASE             |");
                 System.out.println("========================================");
@@ -78,7 +98,7 @@ public class DungeonMayhemMain {
                 }
 
                 for(int i=0; i<actionOpt; i++){
-                    displayer.ShowCardHand(currPlayer.GetcurrPlayingCards());
+                    displayer.ShowCardHand(currPlayer.GetCurrPlayingCards());
                     while(true){
                         System.out.print("Choose a card to play action: ");
                         cardOpt = input.nextInt();
@@ -89,6 +109,9 @@ public class DungeonMayhemMain {
                             break;
                         }
                     }
+
+                    //=====CHECK PLAYER VALIDITY=====//
+                    // DEVLOPED BY: AMARA
                     while(true){
                         System.out.println("Choose a player to play action:  ");
                         displayer.ShowPlayers(dm.GetAllPlayer());
@@ -107,11 +130,15 @@ public class DungeonMayhemMain {
                             break;
                         }
                     }
-                    dm.Play(currPlayer.GetcurrPlayingCards()[cardOpt-1], dm.GetAllPlayer()[playerOpt-1], dm.GetAllPlayer());
+
+                    //DEVELOPED BY: BEAUTY
+                    dm.Play(currPlayer.GetCurrPlayingCards()[cardOpt-1], dm.GetAllPlayer()[playerOpt-1], dm.GetAllPlayer());
                     dm.Discard(cardOpt-1);
                 }
 
                 
+                //=====DISCARD PHASE=====//
+                // DEVELOPED BY: BEAUTY
                 if(currPlayer.GetCurrPlayingCardNum() > 7){
                     System.out.println("========================================");
                     System.out.println("|             DISCARD PHASE            |");
@@ -120,7 +147,10 @@ public class DungeonMayhemMain {
                     int discardCount = currPlayer.GetCurrPlayingCardNum() - 7; 
                     int discardOpt = 0;
                     for(int i=0; i<discardCount; i++){
-                        displayer.ShowCardHand(currPlayer.GetcurrPlayingCards());
+                        displayer.ShowCardHand(currPlayer.GetCurrPlayingCards());
+                        
+                        //=====CHECK CARD VALITY=====//
+                        // DEVELOPED BY: BEAUTY
                         while(true){
                             System.out.print("Pick a card to discard: ");
                             discardOpt = input.nextInt(); 
@@ -135,6 +165,8 @@ public class DungeonMayhemMain {
                     }
                 } 
             } 
+            //=====SWITCH PLAYER AND DISPLAY WINNER=====// 
+            // DEVELOPED BY: AMARA
             dm.SwitchPlayer(); 
         }
         displayer.DisplayWinner(dm.GetAllPlayer()[0]);

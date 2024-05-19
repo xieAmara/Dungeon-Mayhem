@@ -7,6 +7,8 @@ public class Player {
     private boolean isDead;
 
     //==================================CONSTRUCTOR=======================================//
+
+    // DEVELOPED BY: AMARA
     public Player(int playerType){
         playerHp = 10; 
         playerShield = 0; 
@@ -18,60 +20,72 @@ public class Player {
 
     //==================================PRIVATE METHOD====================================//
 
+    // DEVELOPED BY: AMARA
     public int GetPlayerType(){
         return this.playerType;
     }
 
+    // DEVELOPED BY: AMARA
     public boolean GetIsDead(){
         return this.isDead;     
     }
 
+    // DEVELOPED BY: AMARA
     public int GetPlayerHp(){
         return this.playerHp;
     }
 
+    // DEVELOPED BY: AMARA
     public int GetPlayerShield(){
         return this.playerShield;
     }
 
+    // DEVELOPED BY: AMARA
     public int GetCardCount(){
         return this.cardCount; 
     }
 
+    // DEVELOPED BY: AMARA
     public void SetCardCount(int cardCount){
         this.cardCount = cardCount;
     }
     
+    // DEVELOPED BY: AMARA
     public void SetPlayerShield(int shield){
         this.playerShield = shield;
     }
 
+    // DEVELOPED BY: AMARA
     public void SetPlayerHp(int hp){
         this.playerHp = hp;
     }
 
+    // DEVELOPED BY: AMARA
     public void SetIsDead(boolean isDead){
         this.isDead = isDead; 
     }
 
+    // DEVELOPED BY: AMARA
     public int GetCurrPlayingCardNum(){
         return this.currPlayingCards.length; 
     }
-    
 
-    public Card[] GetcurrPlayingCards(){
+    // DEVELOPED BY: AMARA
+    public Card[] GetCurrPlayingCards(){
         return this.currPlayingCards;
     }
 
+    // DEVELOPED BY: AMARA
     public void SetCurrPlayingCard(int pos, Card card){
         currPlayingCards[pos] = card; 
     }
 
+    // DEVELOPED BY: AMARA
     public void SetCurrPlayingCards(Card[] cards){
         currPlayingCards = cards;
     }
 
-    //MADE BY AMARA
+    //DEVELOPED BY: AMARA
     public void CreateDeck(int heroType, Card[][] deck){
         for(int i=0; i<28; i++){
             int attackCount, specialCount, defenseCount, healCount;

@@ -4,6 +4,15 @@ public class Displayer {
 
      //==================================PRIVATE METHOD====================================//
 
+    /*
+        - rowNum(len: int): int
+        - playerType(p: Player): String
+        - cardType(card: Card): String
+        - getStatus(p: Player): String
+        - printCards(cards: Card[], num: int, count: int): void
+    */
+
+    // DEVELOPED BY: AMARA
     private int rowNum(int len){
         if(len == 4 || len/4 == 0){
             return 1; 
@@ -12,6 +21,7 @@ public class Displayer {
         }
     }
 
+    // DEVELOPED BY: BEAUTY
     private String playerType(Player p){
         int type = p.GetPlayerType();
         if(type == Card.ROGUE){
@@ -26,6 +36,7 @@ public class Displayer {
         return "Paladin";
     }
 
+    // DEVELOPED BY: BEAUTY
     private String cardType(Card card){
         if(card instanceof Rogue){
             return "Rogue";
@@ -39,6 +50,7 @@ public class Displayer {
         return "Paladin";
     }
 
+    // DEVELOPED BY: BEAUTY
     private String getStatus(Player p){
         if(p.GetIsDead()){
             return "Dead";
@@ -46,7 +58,7 @@ public class Displayer {
         return "Alive";
     }
 
-    //MADE BY AMARA
+    // DEVELOPED BY: AMARA
     private void printCards(Card[] cards, int num,int count){
         for(int j = 0; j < num; j++){
             System.out.print("------------------------------     ");
@@ -84,13 +96,14 @@ public class Displayer {
 
     //================================ PUBLIC METHODS =====================================// 
 
+    // DEVELOPED BY: BEAUTY
     public void GameHeader(){
         System.out.println("=======================================");
         System.out.println("|      WELCOME TO DUNGEON MAYHEM      |");
         System.out.println("=======================================");
     }
 
-    //MADE BY AMARA
+    // DEVELOPED BY: AMARA
     public void ShowCardHand(Card[] cards){
         int rows = rowNum(cards.length);
         int col = cards.length; 
@@ -109,6 +122,7 @@ public class Displayer {
         System.out.println("");
     }
 
+    // DEVELOPED BY: BEAUTY
     public void DisplayDeckChoice(int player){
         System.out.println("--------------------------------------------------------------");
         System.out.printf("|%-15s%-15s%-15s%-15s|\n","1","2","3","4");
@@ -117,6 +131,7 @@ public class Displayer {
         System.out.println("Player "+ player+ " pick a deck: ");
     }
 
+    // DEVELOPED BY: AMARA
     public void DisplayPlayerDetails(int hp, int shield){
         System.out.println("|============== HP SCALE ===============|         |====== SHEILD ===========================|");
         System.out.println("-----------------------------------------         -------------------------------------------");
@@ -151,6 +166,7 @@ public class Displayer {
         System.out.println("-----------------------------------------         -------------------------------------------");
     }
 
+    // DEVELOPED BY: BEAUTY
     public void ShowPlayer(Player p){
         System.out.println("");
         System.out.println("========================================");
@@ -159,6 +175,7 @@ public class Displayer {
         System.out.println("");
     }
 
+    // DEVELOPED BY: BEAUTY
     public void ShowPlayers(Player[] players){
         System.out.println(" ");
         for(int i=0; i<players.length; i++){
@@ -167,6 +184,7 @@ public class Displayer {
         }
     }
 
+    // DEVELOPED BY: BEAUTY
     public void DisplayWinner(Player p){
         System.out.println("========================================"); 
         System.out.println("|                                      |");
