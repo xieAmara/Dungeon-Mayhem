@@ -1,13 +1,13 @@
 public abstract class Card {
-    public static final int ROGUE = 0; 
-    public static final int BARBARIAN = 1; 
-    public static final int WIZARD = 2; 
-    public static final int PALADIN = 3;
+    public static final int ROGUE = 0;           // Rogue     position in deck[][] array
+    public static final int BARBARIAN = 1;       // Barbarian position in deck[][] array
+    public static final int WIZARD = 2;          // Wizard    position in deck[][] array
+    public static final int PALADIN = 3;         // Paladin   position in deck[][] array
    
-    private int specialCount; 
-    private int attackCount; 
-    private int defenseCount; 
-    private int healCount; 
+    private int specialCount;  // number of specials in the card 
+    private int attackCount;   // number of attacks  in the card 
+    private int defenseCount;  // number of defenses in the card 
+    private int healCount;     // number of heals    in the card 
 
     
     //==================================CONSTRUCTOR=======================================//

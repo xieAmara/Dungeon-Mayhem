@@ -1,16 +1,9 @@
 public class Displayer {
+    //==================================CONSTRUCTOR====================================//
     public Displayer(){
     }
 
     //==================================PRIVATE METHOD====================================//
-
-    /*
-        
-        - playerType(p: Player): String
-        - cardType(card: Card): String
-        - getStatus(p: Player): String
-        - printCards(cards: Card[], num: int, count: int): void
-    */
 
     // DEVELOPED BY: AMARA
     /* Recursive method to determine the n number of rows needed if cards are to be sorted in a 4 x n grid. 
