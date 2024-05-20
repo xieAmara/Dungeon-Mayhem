@@ -1,5 +1,5 @@
 public class Player {
-    private int playerHp;              //
+    private int playerHp;              
     private int playerType; 
     private Card[] currPlayingCards;
     private int playerShield;
