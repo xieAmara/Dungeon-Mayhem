@@ -12,7 +12,7 @@ public class Paladin extends Card{
         if(special != 0){
             for(int i=0; i<players.length; i++){
                 if(i != Card.PALADIN){
-                    players[i].SetPlayerShield(0);;
+                    players[i].SetPlayerShield(0);
                 }
             }
         }
