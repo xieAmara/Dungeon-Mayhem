@@ -10,13 +10,7 @@ public class Rogue extends Card {
     // DEVELOPED BY: BEAUTY
     public void MightyPower(int special,Player p, Player[] players){
         if(special != 0 ){
-            if(p.GetPlayerHp()+special>=10){
-                p.SetPlayerHp(10);
-            }
-            else{
-                p.SetPlayerHp(p.GetPlayerHp()+special);
-            }
-            super.Attack(special, p);
+            super.Attack(GetSpecialCount(), p);
         }
     }
 }
