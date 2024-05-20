@@ -1,5 +1,5 @@
 public class Player {
-    private int playerHp; 
+    private int playerHp;              //
     private int playerType; 
     private Card[] currPlayingCards;
     private int playerShield;
@@ -93,7 +93,7 @@ public class Player {
             switch(heroType){
                 case Card.ROGUE: 
                     do{
-                        attackCount = (int)(Math.random()*4); 
+                        attackCount = (int)(Math.random()*3); 
                         specialCount = (int)(Math.random()*2);
                         defenseCount = (int)(Math.random()*1); 
                         healCount = (int)(Math.random()*2); 
@@ -102,7 +102,7 @@ public class Player {
                     break;
                 case Card.BARBARIAN: 
                     do{
-                        attackCount = (int)(Math.random()*4); 
+                        attackCount = (int)(Math.random()*3); 
                         specialCount = (int)(Math.random()*1);
                         defenseCount = (int)(Math.random()*2); 
                         healCount = (int)(Math.random()*2); 
@@ -111,16 +111,16 @@ public class Player {
                     break;
                 case Card.WIZARD: 
                     do{
-                        attackCount = (int)(Math.random()*3); 
+                        attackCount = (int)(Math.random()*2); 
                         specialCount = (int)(Math.random()*4);
-                        defenseCount = (int)(Math.random()*1); 
+                        defenseCount = (int)(Math.random()*2); 
                         healCount = (int)(Math.random()*1); 
                     }while(attackCount==0 && specialCount==0 && defenseCount==0 && healCount==0);
                     deck[Card.WIZARD][i] = new Wizard(specialCount, attackCount, defenseCount, healCount);
                     break;
                 case Card.PALADIN: 
                     do{
-                        attackCount = (int)(Math.random()*3); 
+                        attackCount = (int)(Math.random()*2); 
                         specialCount = (int)(Math.random()*1);
                         defenseCount = (int)(Math.random()*2); 
                         healCount = (int)(Math.random()*3); 
