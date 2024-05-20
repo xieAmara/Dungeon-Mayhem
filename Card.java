@@ -4,10 +4,10 @@ public abstract class Card {
     public static final int WIZARD = 2;          // Wizard    position in deck[][] array
     public static final int PALADIN = 3;         // Paladin   position in deck[][] array
    
-    private int specialCount;  // number of specials in the card 
-    private int attackCount;   // number of attacks  in the card 
-    private int defenseCount;  // number of defenses in the card 
-    private int healCount;     // number of heals    in the card 
+    private int specialCount;                    // number of specials in the card 
+    private int attackCount;                     // number of attacks  in the card 
+    private int defenseCount;                    // number of defenses in the card 
+    private int healCount;                       // number of heals    in the card 
 
     
     //==================================CONSTRUCTOR=======================================//
@@ -25,21 +25,33 @@ public abstract class Card {
     //==================================PUBLIC METHOD=====================================//
 
     // DEVELOPED BY: BEAUTY
+    /* Get the number of attacks in the card
+     * @return - an integer value of how many attack counts are present in the action card chosen 
+     */
     public int GetAttackCount(){
         return this.attackCount;
     }
 
     // DEVELOPED BY: BEAUTY
+    /* Get the number of specials in the card
+     * @return - an integer value of how many special counts are present in the action card chosen 
+     */
     public int GetSpecialCount(){
         return this.specialCount;
     }
 
     // DEVELOPED BY: BEAUTY
+    /* Get the number of defenses in the card
+     * @return - an integer value of how many defense counts are present in the action card chosen 
+     */
     public int GetDefenseCount(){
         return this.defenseCount;
     }
 
     // DEVELOPED BY: BEAUTY
+    /* Get the number of heals in the card
+     * @return - an integer value of how many heal counts are present in the action card chosen 
+     */
     public int GetHealCount(){
         return this.healCount;
     }
