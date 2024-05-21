@@ -16,7 +16,7 @@ public class DungeonMayhem{
      * @param numPlayer - number of players present in the game 
      */
     public DungeonMayhem(int numPlayer){
-        this.numPlayer = numPlayer;
+        this.numPlayer = numPlayer;                           
         this.allPlayers = new Player[numPlayer];
         this.allDeck = new Card[4][];    
     }

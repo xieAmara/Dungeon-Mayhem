@@ -8,17 +8,26 @@ public class DungeonMayhemMain {
 
         //====HOME PAGE====//
         // DEVELOPED BY: AMARA
+        // start by displaying the game header and promoting how many players there will be 
         displayer.GameHeader();
         System.out.print("How many players? (minimum 2, maximum 4): ");
         int player = input.nextInt();
+        // make sure the value entered is minimum 2 and maximum 4 
         while(player>4 || player <2){
             System.out.println("ERROR! Please enter a valid amount of player");
             System.out.print("How many players? (minimum 2, maximum 4): ");
             player = input.nextInt();
         }
+        // construct a dungeon mayhem (backend) object depending on the number of players 
         dm = new DungeonMayhem(player); 
+
+        // keep track if the decks are chosen. One player cannot possess the same deck of cards 
         boolean[] deckTrack = {false, false, false, false}; 
+
+        // for each player, prompt them to enter their desired deck number 
         for(int i=0; i<player; i++){
+
+            //display the deck choices and make sure the value entered is valid 
             displayer.DisplayDeckChoice(i+1);
             int deckChoice = input.nextInt();
 
@@ -27,24 +36,37 @@ public class DungeonMayhemMain {
                 displayer.DisplayDeckChoice(i+1);
                 deckChoice = input.nextInt();
             }
+
+            // make sure that the deck choice that the user prompted is not taken 
             while(deckTrack[deckChoice - 1]){
                 System.out.println("ERROR! This deck is taken, please choose another deck");
                 displayer.DisplayDeckChoice(i+1);
                 deckChoice = input.nextInt();
             }
+
+            // create the player according to the deck choice chosen and set the current player to him 
+            // then create the deck for the current player depending on their deck choice 
             dm.SetCurrPlayer(dm.CreatePlayer(i, deckChoice - 1));
             dm.CreateDeck(deckChoice - 1);
+
+            // set the valid deck choice as chosen 
             deckTrack[deckChoice - 1] = true; 
+
+            // automatically draw 5 cards for the current player 
             for(int j=0; j<5; j++){
                 dm.AddCardToHand(dm.Draw());
                 dm.GetCurrPlayer().SetCardCount(dm.GetCurrPlayer().GetCardCount() + 1);
             }
         }
+
+        // Finally set Player 1 to be the first to play the game 
         dm.SetCurrPlayer(dm.GetAllPlayer()[0]);
         
         //=====GAME PAGE WHILE LOOP=====//
         // DEVELOPED BY: AMARA
+        // Continue the game if there is no winner yet 
         while(!dm.HasGameWinner()){
+            // get the current player and place it into a variable 
             Player currPlayer = dm.GetCurrPlayer();
 
             //=====CHECK PLAYER STATUS=====//
@@ -56,12 +78,14 @@ public class DungeonMayhemMain {
                 currPlayer.SetIsDead(true);
             }
 
-
+            //=====CREATE DECK FOR PLAYER=====//
+            // DEVELOPED BY: AMARA
+            /* If the player is still alive  */
             if(currPlayer.GetIsDead() == false){
-
-                //=====CREATE DECK FOR PLAYER=====//
-                // DEVELOPED BY: AMARA
+                 /* Show the current player's character and title  */
                 displayer.ShowPlayer(currPlayer);
+
+                // if the drawing pile is less than or equal to five, shuffle the discard pile by creating a new deck 
                 if(dm.GetCardDeckLength(currPlayer.GetPlayerType()) <= 5){
                     dm.CreateDeck(currPlayer.GetPlayerType());
                 }
@@ -73,11 +97,15 @@ public class DungeonMayhemMain {
                 System.out.println("");
 
                 // DEVELOPED BY: AMARA
+                // each time the player draws two card for the draw phase 
+                // extend the hand to fit one more card, add the drawn card into the hand and increment the cardCount 
                 for(int j=0; j<2; j++){
                     dm.ExtendCardDeck();
                     dm.AddCardToHand(dm.Draw());
                     currPlayer.SetCardCount(currPlayer.GetCardCount() + 1);
                 }
+
+                // display out the player's Hp and Sheild after the card is drawn 
                 displayer.DisplayPlayerDetails(currPlayer.GetPlayerHp(), currPlayer.GetPlayerShield());
                 System.out.println("");
                 System.out.println("");
@@ -118,12 +146,15 @@ public class DungeonMayhemMain {
                         System.out.print("Option: ");
                         playerOpt = input.nextInt();
                         if(playerOpt < 1 || playerOpt > dm.NumPlayers()){
+                            // make sure that the player number entered is valid
                             System.out.println("Invalid player option try again");
                         }
                         else if(dm.GetAllPlayer()[playerOpt-1].GetIsDead() == true){
+                            // make sure the player choose an alive player to attack on
                             System.out.println("This player is dead choose another player");
                         }
                         else if(dm.GetAllPlayer()[playerOpt-1].GetPlayerType() == currPlayer.GetPlayerType()){
+                            // make sure the player is not choosing itself to attack 
                             System.out.println("You cannot place an action on yourself, please pick another player");
                         }
                         else{
@@ -139,12 +170,12 @@ public class DungeonMayhemMain {
                 
                 //=====DISCARD PHASE=====//
                 // DEVELOPED BY: BEAUTY
-                if(currPlayer.GetCurrPlayingCardNum() > 7){
+                if(currPlayer.GetCardCount() > 7){
                     System.out.println("========================================");
                     System.out.println("|             DISCARD PHASE            |");
                     System.out.println("========================================");
                     System.out.println("");
-                    int discardCount = currPlayer.GetCurrPlayingCardNum() - 7; 
+                    int discardCount = currPlayer.GetCardCount() - 7; 
                     int discardOpt = 0;
                     for(int i=0; i<discardCount; i++){
                         displayer.ShowCardHand(currPlayer.GetCurrPlayingCards());
@@ -167,8 +198,10 @@ public class DungeonMayhemMain {
             } 
             //=====SWITCH PLAYER AND DISPLAY WINNER=====// 
             // DEVELOPED BY: AMARA
+            // switch to the next player 
             dm.SwitchPlayer(); 
         }
+        // display the details of the winning player 
         displayer.DisplayWinner(dm.GetAllPlayer()[0]);
     input.close();  
     }
