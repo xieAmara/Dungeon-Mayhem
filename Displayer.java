@@ -39,7 +39,7 @@ public class Displayer {
 
     // DEVELOPED BY: BEAUTY
     /* Determines of the character of the card array passed
-     * @param card - the card deck 
+     * @param card - the card object that the player chose 
      * @return     - The character that the deck belong to
      */
     private String cardType(Card card){
