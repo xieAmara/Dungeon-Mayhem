@@ -71,7 +71,7 @@ public class DungeonMayhemMain {
 
             //=====CHECK PLAYER STATUS=====//
             // DEVELOPED BY: BEAUTY
-            // If the player's hp is at 0
+            // If the player's hp is at 0 or less than 0
             if(dm.HasHpGone()){
                 System.out.println("========================================");
                 System.out.printf("|Player %-24s : Dead|\n",dm.GetCurrPlayerName());
