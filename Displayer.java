@@ -19,6 +19,10 @@ public class Displayer {
     }
 
     // DEVELOPED BY: BEAUTY
+    /* Shows the name of the characters
+     * @param p - the player
+     * @return  -  String of the character
+     */
     private String playerType(Player p){
         int type = p.GetPlayerType();
         if(type == Card.ROGUE){
@@ -34,6 +38,10 @@ public class Displayer {
     }
 
     // DEVELOPED BY: BEAUTY
+    /* Determines of the character of the card array passed
+     * @param card - the card deck 
+     * @return     - The character that the deck belong to
+     */
     private String cardType(Card card){
         if(card instanceof Rogue){
             return "Rogue";
@@ -48,6 +56,10 @@ public class Displayer {
     }
 
     // DEVELOPED BY: BEAUTY
+    /* Determines the status of the player, dead or alive
+     * @param p - the player
+     * @return  - the status of the player, dead or alive 
+     */
     private String getStatus(Player p){
         if(p.GetIsDead()){
             return "Dead";
@@ -107,6 +119,7 @@ public class Displayer {
     //================================ PUBLIC METHODS =====================================// 
 
     // DEVELOPED BY: BEAUTY
+    // Displays the game haeader
     public void GameHeader(){
         System.out.println("=======================================");
         System.out.println("|      WELCOME TO DUNGEON MAYHEM      |");
@@ -144,6 +157,9 @@ public class Displayer {
     }
 
     // DEVELOPED BY: BEAUTY
+    /* Displays the character menu and asks the players to pick a character
+     * @param player - the person to play
+     */
     public void DisplayDeckChoice(int player){
         System.out.println("--------------------------------------------------------------");
         System.out.printf("|%-15s%-15s%-15s%-15s|\n","1","2","3","4");
@@ -199,6 +215,9 @@ public class Displayer {
     }
 
     // DEVELOPED BY: BEAUTY
+    /* Displays the header of the player's character
+     * @param p - the player
+     */
     public void ShowPlayer(Player p){
         System.out.println("");
         System.out.println("========================================");
@@ -208,6 +227,9 @@ public class Displayer {
     }
 
     // DEVELOPED BY: BEAUTY
+    /* Displays the status of the players, if dead or alive
+     * @param players - all the players
+     */
     public void ShowPlayers(Player[] players){
         System.out.println(" ");
         for(int i=0; i<players.length; i++){
@@ -217,6 +239,9 @@ public class Displayer {
     }
 
     // DEVELOPED BY: BEAUTY
+    /* Displays the game winner
+     * @param p - the winner
+     */
     public void DisplayWinner(Player p){
         System.out.println("========================================"); 
         System.out.println("|                                      |");

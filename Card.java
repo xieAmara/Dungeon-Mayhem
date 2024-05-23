@@ -99,9 +99,12 @@ public abstract class Card {
      */
     public void Heal(int heal, Player p){
         p.SetPlayerHp(p.GetPlayerHp()+heal);
-        // sets the maximum hp to 10
+        // increases player's health depending on number of heal
+
+        // Number of health is greater than 10
         if(p.GetPlayerHp()>10){
             p.SetPlayerHp(10);
+            // sets the maximum hp to 10
         }
     }
 

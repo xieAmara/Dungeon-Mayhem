@@ -71,11 +71,14 @@ public class DungeonMayhemMain {
 
             //=====CHECK PLAYER STATUS=====//
             // DEVELOPED BY: BEAUTY
+            // If the player's hp is at 0
             if(dm.HasHpGone()){
                 System.out.println("========================================");
                 System.out.printf("|Player %-24s : Dead|\n",dm.GetCurrPlayerName());
                 System.out.println("========================================");
+                // Show player is dead
                 currPlayer.SetIsDead(true);
+                // Sets the player to be dead for their turn to be skipped 
             }
 
             //=====CREATE DECK FOR PLAYER=====//
@@ -121,17 +124,20 @@ public class DungeonMayhemMain {
                 int actionOpt = input.nextInt();
                 // 
                 while(actionOpt <1 || actionOpt>2){
+                    // make sure that the number entered is valid 
                     System.out.println("ERROR! Invalid Option");
                     System.out.print("How many action will you play (minimum 1 maximum 2): ");
                     actionOpt = input.nextInt();
                 }
 
                 for(int i=0; i<actionOpt; i++){
+                    // allows the player to play the number of actions inputed 
                     displayer.ShowCardHand(currPlayer.GetCurrPlayingCards());
                     while(true){
                         System.out.print("Choose a card to play action: ");
                         cardOpt = input.nextInt();
                         if(cardOpt<1 || cardOpt > currPlayer.GetCardCount()){
+                            // make sure that the number entered is valid
                             System.out.println("ERROR! Invalid card option.");
                         }
                         else{
@@ -165,7 +171,14 @@ public class DungeonMayhemMain {
 
                     //DEVELOPED BY: BEAUTY
                     dm.Play(currPlayer.GetCurrPlayingCards()[cardOpt-1], dm.GetAllPlayer()[playerOpt-1], dm.GetAllPlayer());
+                    /* Passes the card chosesn, player position and number of players to the DungeonMayhem class
+                     * [cardOpt-1] because the array starts from 0, while the number of cards start from 1
+                     * [playerOpt-1] because the array starts from 0, while the number of players start from 1
+                     * number of get all players passed because of the wizard's special ability
+                     */
                     dm.Discard(cardOpt-1);
+                    /* As array starts from 0 and the number of cards start from 1
+                     * [cardOpt-1] so the position of the card is corrrect*/
                 }
 
                 
@@ -176,17 +189,21 @@ public class DungeonMayhemMain {
                     System.out.println("|             DISCARD PHASE            |");
                     System.out.println("========================================");
                     System.out.println("");
-                    int discardCount = currPlayer.GetCardCount() - 7; 
+                    int discardCount = currPlayer.GetCardCount() - 7;
+                    // determines how many card to discard
                     int discardOpt = 0;
                     for(int i=0; i<discardCount; i++){
+                        // ensures the player discounds the amount of extra
                         displayer.ShowCardHand(currPlayer.GetCurrPlayingCards());
-                        
+                        // shows the hand of the player
+
                         //=====CHECK CARD VALITY=====//
                         // DEVELOPED BY: BEAUTY
                         while(true){
                             System.out.print("Pick a card to discard: ");
                             discardOpt = input.nextInt(); 
                             if(discardOpt<1 || discardOpt>currPlayer.GetCardCount()){
+                                // Makes sure the numebr entered is valid
                                 System.out.println("ERROR! Invalid card option.");
                             }
                             else{
@@ -194,6 +211,8 @@ public class DungeonMayhemMain {
                             }
                         }
                         dm.Discard(discardOpt-1);
+                        /* As array starts from 0 and the number of cards start from 1
+                         * [cardOpt-1] so the position of the card is corrrect*/
                     }
                 } 
             } 
