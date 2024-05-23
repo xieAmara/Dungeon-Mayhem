@@ -1,10 +1,10 @@
 public class Player {
-    private int playerHp;              
-    private int playerType; 
-    private Card[] currPlayingCards;
-    private int playerShield;
-    private int cardCount; 
-    private boolean isDead;
+    private int playerHp;                 // current hp of the player    
+    private int playerType;               // current player type of the player in integers 
+    private Card[] currPlayingCards;      // Card[] array of the current card hand 
+    private int playerShield;             // current sheild count of the player 
+    private int cardCount;                // current number of cards in the card hand 
+    private boolean isDead;               // status of player (Dead or Alive)
 
     //==================================CONSTRUCTOR=======================================//
 
@@ -192,7 +192,3 @@ public class Player {
         }
     }
 }
-
-
-
-
