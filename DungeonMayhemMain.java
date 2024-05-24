@@ -122,7 +122,7 @@ public class DungeonMayhemMain {
                 int cardOpt, playerOpt; 
                 System.out.print("How many action will you play (minimum 1 maximum 2): ");
                 int actionOpt = input.nextInt();
-                // 
+                
                 while(actionOpt <1 || actionOpt>2){
                     // make sure that the number entered is valid 
                     System.out.println("ERROR! Invalid Option");
@@ -137,7 +137,7 @@ public class DungeonMayhemMain {
                         System.out.print("Choose a card to play action: ");
                         cardOpt = input.nextInt();
                         if(cardOpt<1 || cardOpt > currPlayer.GetCardCount()){
-                            // make sure that the number entered is valid
+                            // make sure that the card number entered is valid
                             System.out.println("ERROR! Invalid card option.");
                         }
                         else{
@@ -193,7 +193,7 @@ public class DungeonMayhemMain {
                     // determines how many card to discard
                     int discardOpt = 0;
                     for(int i=0; i<discardCount; i++){
-                        // ensures the player discounds the amount of extra
+                        // ensures the player discards the amount of extra
                         displayer.ShowCardHand(currPlayer.GetCurrPlayingCards());
                         // shows the hand of the player
 

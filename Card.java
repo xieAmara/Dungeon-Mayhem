@@ -110,7 +110,7 @@ public abstract class Card {
     }
 
     // DEVELOPED BY: BEAUTY
-    /* attacks the selected player depending on the special count 
+    /* Attacks the selected player depending on the special count 
      * @param special  - numnber of special 
      * @param p        - player to attack
      * @param players  - all players present

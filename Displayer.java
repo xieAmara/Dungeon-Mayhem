@@ -21,8 +21,8 @@ public class Displayer {
 
     // DEVELOPED BY: BEAUTY
     /* Shows the name of the characters
-     * @param p - the player
-     * @return  -  String of the character
+     * @param p - The player
+     * @return  - String of the character
      */
     private String playerType(Player p){
         int type = p.GetPlayerType();
@@ -39,8 +39,8 @@ public class Displayer {
     }
 
     // DEVELOPED BY: BEAUTY
-    /* Determines of the character of the card array passed
-     * @param card - the card object that the player chose 
+    /* Determines the character of the card array passed
+     * @param card - The card object that the player chose 
      * @return     - The character that the deck belong to
      */
     private String cardType(Card card){
@@ -58,8 +58,8 @@ public class Displayer {
 
     // DEVELOPED BY: BEAUTY
     /* Determines the status of the player, dead or alive
-     * @param p - the player
-     * @return  - the status of the player, dead or alive 
+     * @param p - The player
+     * @return  - The status of the player, dead or alive 
      */
     private String getStatus(Player p){
         if(p.GetIsDead()){
@@ -159,7 +159,7 @@ public class Displayer {
 
     // DEVELOPED BY: BEAUTY
     /* Displays the character menu and asks the players to pick a character
-     * @param player - the person to play
+     * @param player - The person playing
      */
     public void DisplayDeckChoice(int player){
         System.out.println("--------------------------------------------------------------");
@@ -217,7 +217,7 @@ public class Displayer {
 
     // DEVELOPED BY: BEAUTY
     /* Displays the header of the player's character
-     * @param p - the player
+     * @param p - The player
      */
     public void ShowPlayer(Player p){
         System.out.println("");
@@ -229,7 +229,7 @@ public class Displayer {
 
     // DEVELOPED BY: BEAUTY
     /* Displays the status of the players, if dead or alive
-     * @param players - all the players
+     * @param players - All the players
      */
     public void ShowPlayers(Player[] players){
         System.out.println(" ");
@@ -241,7 +241,7 @@ public class Displayer {
 
     // DEVELOPED BY: BEAUTY
     /* Displays the game winner
-     * @param p - the winner
+     * @param p - The winner
      */
     public void DisplayWinner(Player p){
         System.out.println("========================================"); 
