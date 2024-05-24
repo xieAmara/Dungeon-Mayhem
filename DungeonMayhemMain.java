@@ -224,6 +224,5 @@ public class DungeonMayhemMain {
         // display the details of the winning player 
         displayer.DisplayWinner(dm.GetAllPlayer()[0]);
     input.close();  
-    }
-    
+    }  
 }

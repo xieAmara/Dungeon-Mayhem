@@ -1,4 +1,5 @@
 public class Rogue extends Card {
+    /* Default Constructor */
     public Rogue(){
     }
 

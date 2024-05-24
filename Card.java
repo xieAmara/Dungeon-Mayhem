@@ -11,6 +11,7 @@ public abstract class Card {
 
     
     //==================================CONSTRUCTOR=======================================//
+    /* Default Constructor */
     public Card(){
     }
 
@@ -109,6 +110,10 @@ public abstract class Card {
     }
 
     // DEVELOPED BY: BEAUTY
-    public abstract void MightyPower(int special,Player p, Player[] players);
-    
+    /* attacks the selected player depending on the special count 
+     * @param special  - numnber of special 
+     * @param p        - player to attack
+     * @param players  - all players present
+     */
+    public abstract void MightyPower(int special,Player p, Player[] players); 
 }

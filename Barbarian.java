@@ -1,4 +1,5 @@
 public class Barbarian extends Card {
+    /* Default Constructor */
     public Barbarian(){
     }
 

@@ -1,4 +1,5 @@
 public class Paladin extends Card{
+    /* Default Constructor */
     public Paladin(){
     }
 

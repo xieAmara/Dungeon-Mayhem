@@ -1,4 +1,5 @@
 public class Wizard extends Card {
+    /* Default Constructor */
     public Wizard(){
     }
 
