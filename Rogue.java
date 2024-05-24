@@ -21,7 +21,9 @@ public class Rogue extends Card {
      * @param players  - all players present
      */
     public void MightyPower(int special,Player p, Player[] players){
+        // apply this power only when the special is not zero 
         if(special != 0 ){
+            // attack the player depending on how many specials it has 
             super.Attack(GetSpecialCount(), p);
         }
     }

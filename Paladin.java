@@ -21,11 +21,11 @@ public class Paladin extends Card{
      * @param players  - all players present
      */
     public void MightyPower(int special,Player p, Player[] players) {
+        // only apply this when the special count is not zero 
         if(special != 0){
             for(int i=0; i<players.length; i++){
-                if(i != Card.PALADIN){
+                    // set everyone's shield to zero 
                     players[i].SetPlayerShield(0);
-                }
             }
         }
     }

@@ -21,7 +21,9 @@ public class Barbarian extends Card {
      * @param players  - all players present
      */
     public void MightyPower(int special,Player p, Player[] players){
+        // apply this method only when the special is not zero 
         if(special !=0){
+            // heal the player depending on how much attack it has
             p.SetPlayerHp(p.GetPlayerHp() + super.GetAttackCount());
         }
     }

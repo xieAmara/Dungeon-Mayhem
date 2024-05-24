@@ -21,9 +21,11 @@ public class Wizard extends Card {
      * @param players  - all players present
      */
     public void MightyPower(int special,Player p, Player[] players){
+        // apply only when the special is not zero 
         if(special != 0){
             for(int i=0; i<players.length; i++){
                 if(i != Card.WIZARD){
+                    // reduce the special count's amount on the player's hp except themselves
                     players[i].SetPlayerHp(players[i].GetPlayerHp()-3);
                 }
             }
