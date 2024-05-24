@@ -15,7 +15,7 @@ public class Wizard extends Card {
     }
 
     // DEVELOPED BY: BEAUTY
-    /* attack the count of special to all players present,except themselves
+    /* Attack the count of special to all players present,except themselves
      * @param special  - number of special
      * @param p        - player to attack 
      * @param players  - all players present

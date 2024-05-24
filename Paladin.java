@@ -15,7 +15,7 @@ public class Paladin extends Card{
     }
 
     // DEVELOPED BY: BEAUTY
-    /* destorys the sheild of every character, including themselves 
+    /* Destorys the sheild of every character, including themselves 
      * @param special  - number of special
      * @param p        - player to attack
      * @param players  - all players present
