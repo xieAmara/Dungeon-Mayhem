@@ -5,7 +5,6 @@ public class DungeonMayhemMain {
         Displayer displayer = new Displayer(); 
         Scanner input = new Scanner(System.in);
 
-
         //====HOME PAGE====//
         // DEVELOPED BY: AMARA
         // start by displaying the game header and promoting how many players there will be 
